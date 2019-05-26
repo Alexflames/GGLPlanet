@@ -7,6 +7,9 @@ public class ProjectileLife : NetworkBehaviour
 {
     public float lifeSpan = 1;
     public float Speed = 0.05f;
+    public GameObject owner;
+
+    List<int> alreadyHit = new List<int>();
 
     // Update is called once per frame
     void FixedUpdate()
@@ -24,7 +27,12 @@ public class ProjectileLife : NetworkBehaviour
     {
         if (coll.gameObject.tag == "Enemy")
         {
-            coll.gameObject.GetComponent<BaddyLogic>().TakeDamage();
+            if (!alreadyHit.Contains(coll.gameObject.GetInstanceID()))
+            {
+                alreadyHit.Add(coll.gameObject.GetInstanceID());
+                AttackInformation attack = new AttackInformation(owner, 1);
+                coll.gameObject.GetComponent<StatsManager>().DealDamage(attack);
+            }
         }
     }
 }
