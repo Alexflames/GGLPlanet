@@ -50,6 +50,14 @@ public class SimplePlayerMovement : NetworkBehaviour
                 _sprite.flipX = isFlipNeeded;
                 CmdFlipSprite(isFlipNeeded);
             }
+
+            if (Input.GetButton("Rotate Camera Left")) {
+                gameObject.transform.Rotate(new Vector3(0, 0, 3));
+            }
+            if (Input.GetButton("Rotate Camera Right"))
+            {
+                gameObject.transform.Rotate(new Vector3(0, 0, -3));
+            }
         }
     }
 }

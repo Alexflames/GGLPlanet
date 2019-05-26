@@ -12,6 +12,11 @@ public class LockCameraOnPlayer : NetworkBehaviour
         {
             return;
         }
-        GameObject.Find("Main Camera").transform.parent = gameObject.transform;    
+        var camera = GameObject.Find("Main Camera");
+        camera.transform.parent = gameObject.transform;
+        camera.transform.position = new Vector3(
+                gameObject.transform.position.x, 
+                gameObject.transform.position.y + 1, 
+                camera.transform.position.z);
     }
 }

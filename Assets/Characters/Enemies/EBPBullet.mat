@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SimpleFloorMat
-  m_Shader: {fileID: -6465566751694194690, guid: 4b64dd04fd5042f4e950e671820ab6f4,
+  m_Name: EBPBullet
+  m_Shader: {fileID: -6465566751694194690, guid: 887fdc1237cb3e9489073699efd6d412,
     type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -19,7 +19,10 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - Texture2D_EF24093:
+        m_Texture: {fileID: 2800000, guid: 525bcd69a0fb6d5479621216ddf45cd5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats: []
-    m_Colors:
-    - Color_BCA1341F: {r: 0.3962264, g: 0.29343182, b: 0.29343182, a: 0}
+    m_Colors: []

@@ -22,10 +22,11 @@ public class PlayerShooting : NetworkBehaviour
         {
             m_CoolDownTL = CoolDown;
            
-            var bullet = Instantiate(projectile, transform.position, transform.rotation);
+            var bullet = Instantiate(projectile, transform.position, new Quaternion());
             
             var offset = new Vector2(mousePos.x - screenPoint.x, mousePos.y - screenPoint.y);
             var angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
+            angle += transform.rotation.eulerAngles.z;
             bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
             bullet.transform.Translate(Vector2.right * 0.5f);
 

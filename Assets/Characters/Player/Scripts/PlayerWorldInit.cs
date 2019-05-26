@@ -11,6 +11,8 @@ public class PlayerWorldInit : NetworkBehaviour
         if (!isLocalPlayer)
         {
             GetComponent<SpriteRenderer>().color = new Color(0.8f, 0.2f, 0.8f);
-        }   
+            GetComponent<Collider2D>().isTrigger = true;
+        }
+        
     }
 }
