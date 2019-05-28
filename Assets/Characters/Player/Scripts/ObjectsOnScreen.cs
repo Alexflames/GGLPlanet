@@ -8,8 +8,11 @@ public class ObjectsOnScreen : MonoBehaviour
     public int counter = 0;
     void OnTriggerEnter2D(Collider2D coll)
     {
-        counter++;
-        objectsOnScreen[coll.gameObject.GetHashCode()] = coll.gameObject;
+        if (coll.gameObject.CompareTag("Enemy") || coll.gameObject.CompareTag("Player"))
+        {
+            counter = objectsOnScreen.Count;
+            objectsOnScreen[coll.gameObject.GetHashCode()] = coll.gameObject;
+        }
     }
 
     void OnTriggerExit2D(Collider2D coll)

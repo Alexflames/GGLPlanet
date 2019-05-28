@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4611776295188369527}
   - component: {fileID: 1414921394045255968}
   - component: {fileID: 3921871513389043236}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Extreme Baddy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   serverOnly: 0
   localPlayerAuthority: 0
   m_AssetId: 
-  m_SceneId: 3526229106
+  m_SceneId: 3747334750
 --- !u!61 &5321095401670379185
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -136,14 +136,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3872261766542865433}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -176,7 +176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
-  HP: 6
   Speed: 0.005
   moveDir: {x: 0, y: 0}
 --- !u!114 &1414921394045255968

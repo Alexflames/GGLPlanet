@@ -22,7 +22,7 @@ public class BaddyLogic : NetworkBehaviour
         }
 
         timeToNextMove -= Time.deltaTime;
-
+        
         transform.Translate(moveDir * Speed);
     }
 }

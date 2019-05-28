@@ -28,6 +28,8 @@ public class ExtremeBaddyProj : NetworkBehaviour
     {
         if (!isServer) return;
 
+        if (coll.name == gameObject.name) return;
+
         if (coll.name.ToLower() == "heart")
         {
             var stats = coll.transform.parent.gameObject.GetComponent<StatsManager>();
@@ -35,5 +37,7 @@ public class ExtremeBaddyProj : NetworkBehaviour
             stats.DealDamage(attack);
             NetworkServer.Destroy(gameObject);
         }
+
+        
     }
 }

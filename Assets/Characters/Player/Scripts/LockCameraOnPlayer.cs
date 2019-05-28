@@ -16,7 +16,7 @@ public class LockCameraOnPlayer : NetworkBehaviour
         camera.transform.parent = gameObject.transform;
         camera.transform.position = new Vector3(
                 gameObject.transform.position.x, 
-                gameObject.transform.position.y + 1, 
+                gameObject.transform.position.y, 
                 camera.transform.position.z);
     }
 }

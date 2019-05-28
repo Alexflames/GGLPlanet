@@ -29,8 +29,6 @@ public class LocalObjectsRotation : NetworkBehaviour
 
     bool isObjectToRotate(GameObject obj)
     {
-        if (obj == null) return false;
-
-        return obj.CompareTag("Enemy") || obj.CompareTag("Player");
+        return obj != null;
     }
 }
