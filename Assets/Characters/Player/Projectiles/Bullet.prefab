@@ -96,8 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
-  lifeSpan: 1
+  lifeSpan: 1.2
   Speed: 0.05
+  owner: {fileID: 0}
 --- !u!114 &-3298436875212084209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +114,7 @@ MonoBehaviour:
   serverOnly: 0
   localPlayerAuthority: 0
   m_AssetId: 
-  m_SceneId: 3304701806
+  m_SceneId: 626082433
 --- !u!61 &6028861164442933660
 BoxCollider2D:
   m_ObjectHideFlags: 0

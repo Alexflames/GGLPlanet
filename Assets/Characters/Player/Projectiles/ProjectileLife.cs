@@ -5,7 +5,7 @@ using Mirror;
 
 public class ProjectileLife : NetworkBehaviour
 {
-    public float lifeSpan = 1;
+    public float lifeSpan = 1.2f;
     public float Speed = 0.05f;
     public GameObject owner;
 

@@ -229,7 +229,7 @@ MonoBehaviour:
   serverOnly: 0
   localPlayerAuthority: 1
   m_AssetId: 
-  m_SceneId: 555980966
+  m_SceneId: 525952856
 --- !u!114 &7066949348044127709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +270,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.000000074505806, y: 0.016186476}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -281,7 +281,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.62646496, y: 0.7235837}
   m_EdgeRadius: 0
 --- !u!50 &-8129818064070414410
 Rigidbody2D:
@@ -345,9 +345,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
-  StartHP: 5
+  MaxHP: 5
   Invulnurable: 0
-  invulTimeAfterHit: 0
+  invulTimeAfterHit: 0.6
 --- !u!1 &4041778340113072888
 GameObject:
   m_ObjectHideFlags: 0

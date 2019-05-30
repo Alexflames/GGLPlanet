@@ -5,9 +5,9 @@ using Mirror;
 
 public class StatsManager : NetworkBehaviour
 {
-    public int StartHP = 5;
-    [SyncVar]
-    private int CurrentHP;
+    public int MaxHP = 5;
+    [SyncVar(hook = "HPChange")]
+    protected int CurrentHP;
 
     // "Can entity take damage" properties
     public bool Invulnurable = false;
@@ -18,7 +18,18 @@ public class StatsManager : NetworkBehaviour
 
     void Start()
     {
-        CurrentHP = StartHP;
+        CurrentHP = MaxHP;
+        StatsStart();
+    }
+
+    protected virtual void HPChange(int hp)
+    {
+        return;
+    }
+
+    protected virtual void StatsStart()
+    {
+        return;
     }
 
     void FixedUpdate()
@@ -55,6 +66,7 @@ public class StatsManager : NetworkBehaviour
         }
 
         HitReact();
+        HPChange(CurrentHP);
 
         if (CurrentHP < 0)
         {
