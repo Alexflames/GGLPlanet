@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class LaserCubeLines : MonoBehaviour
 {
-    public float timeBetweenAttacks = 5f;
+    [SerializeField]
+    private float timeBetweenAttacks = 5f;
     private float TTA;
 
     public float attackDuration = 2f;
     private float attackTimeLeft;
 
-    public Color startingColor;
+    public Color startingColor; // Starting color for damaging lines
 
     public GameObject linesContainer;
     private CollidingPlayers collidingPlayers;
@@ -19,6 +20,15 @@ public class LaserCubeLines : MonoBehaviour
     Material sharedLineMaterial;
 
     float rotationRNG;
+
+    // Shader-transition variables block
+    [SerializeField]
+    private Color baseColor = Color.white;
+    [SerializeField]
+    private Color attackColor = Color.black;
+    [SerializeField]
+    private GameObject[] gameObjectsToUseTransition;
+
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +70,13 @@ public class LaserCubeLines : MonoBehaviour
         attackTimeLeft = attackDuration;
         rotationRNG = Random.Range(-90, 90);
         damagedPlayers = new List<GameObject>();
+        foreach (GameObject obj in gameObjectsToUseTransition)
+        {
+            var material = obj.GetComponent<Renderer>().material;
+            material.SetColor("_ColorPrevious", baseColor);
+            material.SetColor("_ColorNext", attackColor);
+            material.SetFloat("_TimeSinceTransitionStart", Time.time);
+        }
     }
 
     void AttUpdate()
@@ -90,28 +107,35 @@ public class LaserCubeLines : MonoBehaviour
                         damagedPlayers.Add(player);
                         player.GetComponentInParent<StatsManager>().DealDamage(attack);
                     }
-                        
                 }
             }
         }
         else
         {
-
+            // some action??
         }
     }
 
     void AttEnd()
     {
         sharedLineMaterial.color =
-                    new Color(
-                        sharedLineMaterial.color.r,
-                        sharedLineMaterial.color.g,
-                        sharedLineMaterial.color.b,
-                        1);
+                            new Color(
+                                sharedLineMaterial.color.r,
+                                sharedLineMaterial.color.g,
+                                sharedLineMaterial.color.b,
+                                1);
+        
+        foreach (GameObject obj in gameObjectsToUseTransition)
+        {
+            var material = obj.GetComponent<Renderer>().material;
+            material.SetColor("_ColorPrevious", attackColor);
+            material.SetColor("_ColorNext", baseColor);
+            material.SetFloat("_TimeSinceTransitionStart", Time.time);
+        }
     }
 
     void OnDestroy()
     {
-        AttEnd();
+        //AttEnd();
     }
 }
