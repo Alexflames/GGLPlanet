@@ -2,17 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using UnityEngine.UI;
 
 public class PlayerShooting : NetworkBehaviour
 {
     public GameObject projectile;
 
-    public float CoolDown = 0.33f;
+    [SerializeField]
+    private float CoolDown = 0.15f;
     float m_CoolDownTL;
+
+    // Weapon reload properties
+    public int weaponMagazine = 6;
+    private int ammoLeft;
+    private Slider ammoSlider;
+    public float reloadTime = 1.5f;
+    private IEnumerator reloadCoroutine;
 
     void Start()
     {
         m_CoolDownTL = CoolDown;
+
+        var slider = GameObject.Find("AmmoSlider");
+        ammoSlider = slider.GetComponent<Slider>();
+        ammoLeft = weaponMagazine;
     }
 
     [Command]
@@ -33,6 +46,27 @@ public class PlayerShooting : NetworkBehaviour
             NetworkServer.Spawn(bullet);
         }
     }
+
+    bool UseAmmo(int ammoCount)
+    {
+        bool toReturn = (ammoLeft -= ammoCount) >= 0;
+        if (ammoSlider != null)
+        {
+            ammoSlider.value = ammoLeft;
+        }
+        return toReturn;
+    }
+
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(reloadTime - 0.1f);
+        ammoLeft = weaponMagazine;
+        if (ammoSlider != null)
+        {
+            ammoSlider.value = weaponMagazine;
+        }
+        yield return null;
+    }
     
     // Update is called once per frame
     void Update()
@@ -42,11 +76,21 @@ public class PlayerShooting : NetworkBehaviour
 
         if (Input.GetButton("Fire1") && m_CoolDownTL == 0)
         {
-            Vector3 mousePos = Input.mousePosition;
-            var screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
-            CmdShoot(mousePos, screenPoint, transform.rotation.eulerAngles);
+            if (UseAmmo(1))
+            {
+                Vector3 mousePos = Input.mousePosition;
+                var screenPoint = Camera.main.WorldToScreenPoint(transform.localPosition);
+                CmdShoot(mousePos, screenPoint, transform.rotation.eulerAngles);
 
-            m_CoolDownTL = CoolDown;
+                m_CoolDownTL = CoolDown;
+            }
+            else
+            {
+                m_CoolDownTL = reloadTime;
+                reloadCoroutine = Reload();
+                StartCoroutine(reloadCoroutine);
+                Reload();
+            }
         }
     }
 }
