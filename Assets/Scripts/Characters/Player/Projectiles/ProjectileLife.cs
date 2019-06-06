@@ -34,5 +34,9 @@ public class ProjectileLife : NetworkBehaviour
                 coll.gameObject.GetComponent<StatsManager>().DealDamage(attack);
             }
         }
+        
+        if (coll.gameObject.tag == "Environment") {
+            NetworkServer.Destroy(gameObject);
+        }
     }
 }

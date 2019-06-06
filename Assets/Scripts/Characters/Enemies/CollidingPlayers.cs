@@ -7,7 +7,6 @@ public class CollidingPlayers : MonoBehaviour
     public List<GameObject> colliding = new List<GameObject>();
 
     void OnTriggerEnter2D(Collider2D coll) {
-        print("enter");
         if (coll.name.ToLower() == "heart")
         {
             colliding.Add(coll.gameObject);
