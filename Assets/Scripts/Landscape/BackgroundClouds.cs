@@ -5,7 +5,7 @@ using UnityEngine;
 public class BackgroundClouds : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] clouds;
+    private GameObject[] clouds = null;
     [SerializeField]
     private float timeToSpawn = 2f;
     [SerializeField]
