@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5214629610259758331}
   - component: {fileID: 8774413391250727494}
   - component: {fileID: -5761748097905922779}
+  - component: {fileID: -8580880478892149857}
   - component: {fileID: -7113247827082950702}
   m_Layer: 0
   m_Name: EBprojectile
@@ -125,6 +126,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.6898066}
   m_EdgeRadius: 0
+--- !u!50 &-8580880478892149857
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8839087569479466680}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &-7113247827082950702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,4 +162,4 @@ MonoBehaviour:
   serverOnly: 0
   localPlayerAuthority: 0
   m_AssetId: 
-  m_SceneId: 2584334560
+  m_SceneId: 1638754969

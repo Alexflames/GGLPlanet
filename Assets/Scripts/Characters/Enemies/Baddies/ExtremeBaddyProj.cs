@@ -38,6 +38,8 @@ public class ExtremeBaddyProj : NetworkBehaviour
             NetworkServer.Destroy(gameObject);
         }
 
-        
+        if (coll.gameObject.tag == "Environment") {
+            NetworkServer.Destroy(gameObject);
+        }
     }
 }

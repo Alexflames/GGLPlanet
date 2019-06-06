@@ -27,7 +27,7 @@ public class LaserCubeLines : MonoBehaviour
     [SerializeField]
     private Color attackColor = Color.black;
     [SerializeField]
-    private GameObject[] gameObjectsToUseTransition;
+    private GameObject[] gameObjectsToUseTransition = null;
 
 
     // Start is called before the first frame update
