@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserCubeLinesAttack : BaseAttack
+public class LaserCubeLinesAttack : CuboidAttack
 {
 
     [SerializeField]
@@ -37,7 +37,7 @@ public class LaserCubeLinesAttack : BaseAttack
         }
     }
     
-    private AttackManager mgr;
+    private CuboidAttackManager mgr;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +49,7 @@ public class LaserCubeLinesAttack : BaseAttack
             rend.sharedMaterial = sharedLineMaterial;
         }
         collidingPlayers = linesContainer.GetComponent<CollidingPlayers>();
-        mgr = gameObject.GetComponent<AttackManager>();
+        mgr = gameObject.GetComponent<CuboidAttackManager>();
     }
 
     public override void AttStart()

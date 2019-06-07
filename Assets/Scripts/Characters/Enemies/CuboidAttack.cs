@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class BaseAttack : MonoBehaviour, Attack {
+public abstract class CuboidAttack : MonoBehaviour, Attack {
     public abstract void AttStart();
     public abstract void AttUpdate(float attackTimeLeft);
     public abstract void AttEnd();

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EmptyAttack : BaseAttack
+public class EmptyAttack : CuboidAttack
 {
 
     [SerializeField]
-    private float attackDuration = 10f;
+    private float attackDuration = 4f;
     public override float duration {
         get {
             return attackDuration;

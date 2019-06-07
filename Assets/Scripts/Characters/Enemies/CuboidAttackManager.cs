@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackManager : MonoBehaviour
+public class CuboidAttackManager : MonoBehaviour
 {
     [SerializeField]
     private float timeBetweenAttacks = 5f;
@@ -13,10 +13,10 @@ public class AttackManager : MonoBehaviour
     [SerializeField]
     private GameObject[] gameObjectsToUseTransition;
 
-    private List<Attack> attacks = new List<Attack> ();
-    private Attack currentAttack;
+    private List<CuboidAttack> attacks = new List<CuboidAttack> ();
+    private CuboidAttack currentAttack;
 
-    public void RegisterAttack (Attack a) {
+    public void RegisterAttack (CuboidAttack a) {
         attacks.Add (a);
     }
 
@@ -28,15 +28,13 @@ public class AttackManager : MonoBehaviour
     void Start()
     {
         TTA = timeBetweenAttacks;
-        Attack[] foundAttacks = gameObject.GetComponents<Attack> ();
-        print (foundAttacks.Length);
-        foreach (Attack a in foundAttacks) {
+        CuboidAttack[] foundAttacks = gameObject.GetComponents<CuboidAttack> ();
+        foreach (CuboidAttack a in foundAttacks) {
             RegisterAttack (a);
-            print (a);
         }
     }
 
-    public Attack ChooseAttack () {
+    public CuboidAttack ChooseAttack () {
         return attacks[Random.Range (0, attacks.Count)];
     }
 

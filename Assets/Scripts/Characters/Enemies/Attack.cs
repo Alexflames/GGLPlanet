@@ -6,5 +6,4 @@ public interface Attack {
     void AttEnd();
     float duration {get;}
     int priority {get;}
-    Color attackColor {get; }
 }
