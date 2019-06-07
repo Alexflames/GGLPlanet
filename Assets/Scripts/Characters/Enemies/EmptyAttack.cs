@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//EmptyAttack: for testing of attack switching. Only prints debug messages
 public class EmptyAttack : CuboidAttack
 {
-
     [SerializeField]
     private float attackDuration = 4f;
     public override float duration {
@@ -26,14 +26,6 @@ public class EmptyAttack : CuboidAttack
             return attColor;
         }
     }
-    
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public override void AttStart()
     {
@@ -48,10 +40,5 @@ public class EmptyAttack : CuboidAttack
     public override void AttEnd()
     {
         print ("Empty attack ended");
-    }
-
-    void OnDestroy()
-    {
-        //AttEnd();
     }
 }
