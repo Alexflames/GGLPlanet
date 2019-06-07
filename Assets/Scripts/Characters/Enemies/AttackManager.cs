@@ -74,6 +74,7 @@ public class AttackManager : MonoBehaviour
                     material.SetFloat("_TimeSinceTransitionStart", Time.time);
                 }
                 currentAttack = null;
+                TTA = timeBetweenAttacks;
             }
         }
 
