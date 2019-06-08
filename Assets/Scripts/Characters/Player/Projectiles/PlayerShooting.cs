@@ -24,7 +24,7 @@ public class PlayerShooting : NetworkBehaviour
         m_CoolDownTL = CoolDown;
 
         var slider = GameObject.Find("AmmoSlider");
-        ammoSlider = slider.GetComponent<Slider>();
+        ammoSlider = slider == null ? null : slider.GetComponent<Slider>();
         ammoLeft = weaponMagazine;
     }
 
