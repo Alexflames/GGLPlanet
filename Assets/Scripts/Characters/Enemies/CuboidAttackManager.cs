@@ -50,7 +50,7 @@ public class CuboidAttackManager : MonoBehaviour
         if (!priorityBasedChoosing) return attacks[Random.Range (0, attacks.Count)];
         int rndnum = Random.Range (0, prioritiesSum);
         int i;
-	    for (i = attacks.Count - 2; i>= 0; i--) {
+        for (i = attacks.Count - 2; i>= 0; i--) {
             if (prioritiesCumulative[i] <= rndnum) return attacks[i + 1];
         }
         return attacks[0];
