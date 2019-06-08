@@ -22936,6 +22936,7 @@ MonoBehaviour:
   - {fileID: 441443188}
   - {fileID: 229832113}
   - {fileID: 789480490730748011}
+  priorityBasedChoosing: 1
 --- !u!1001 &7610037329676008624
 PrefabInstance:
   m_ObjectHideFlags: 0
