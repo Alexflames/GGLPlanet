@@ -12,7 +12,7 @@ public class SimplePlayerMovement : NetworkBehaviour
 
     void Start()
     {
-        _sprite = GetComponent<SpriteRenderer>();
+        _sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     [Command]

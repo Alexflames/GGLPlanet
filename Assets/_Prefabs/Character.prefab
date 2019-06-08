@@ -160,7 +160,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: facaa732f2bb66c4d977fba1ab562979, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0062018a617dc324996b2e629d6c589a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -213,7 +213,9 @@ MonoBehaviour:
   syncInterval: 0.1
   projectile: {fileID: 7280782173087262367, guid: 8a55b40f49034644bbd279ca1c5f4229,
     type: 3}
-  CoolDown: 0.33
+  CoolDown: 0.15
+  weaponMagazine: 6
+  reloadTime: 1.5
 --- !u!114 &2103038758399383069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,8 +230,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serverOnly: 0
   localPlayerAuthority: 1
-  m_AssetId: 6915a878c0bab9846b55f21437d15d96
-  m_SceneId: 0
+  m_AssetId: 
+  m_SceneId: 1026830568
 --- !u!114 &7066949348044127709
 MonoBehaviour:
   m_ObjectHideFlags: 0

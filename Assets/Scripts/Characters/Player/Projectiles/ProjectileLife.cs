@@ -11,6 +11,9 @@ public class ProjectileLife : NetworkBehaviour
 
     List<int> alreadyHit = new List<int>();
 
+    [SerializeField]
+    private GameObject hitEffect = null;
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -32,6 +35,8 @@ public class ProjectileLife : NetworkBehaviour
                 alreadyHit.Add(coll.gameObject.GetInstanceID());
                 AttackInformation attack = new AttackInformation(owner, 1);
                 coll.gameObject.GetComponent<StatsManager>().DealDamage(attack);
+                var hitEff = GameObject.Instantiate(hitEffect, transform.position - transform.forward * 0.5f, transform.rotation);
+                Destroy(hitEff, 1);
             }
         }
         
