@@ -16,7 +16,9 @@ public class CuboidAttackManager : MonoBehaviour
     private List<CuboidAttack> attacks = new List<CuboidAttack> ();
     private CuboidAttack currentAttack;
 
+    
     [SerializeField]
+    // Should some attacks have more priority over others
     private bool priorityBasedChoosing;
     private int prioritiesSum = 0;
     private List<int> prioritiesCumulative = new List<int> ();
@@ -31,7 +33,7 @@ public class CuboidAttackManager : MonoBehaviour
     }
 
     public void InjurePlayer (GameObject target, int damage) {
-        AttackInformation attack = new AttackInformation(gameObject, 1);
+        AttackInformation attack = new AttackInformation(gameObject, damage);
         target.GetComponentInParent<StatsManager>().DealDamage(attack);
     }
 
@@ -48,10 +50,23 @@ public class CuboidAttackManager : MonoBehaviour
         if (!priorityBasedChoosing) return attacks[Random.Range (0, attacks.Count)];
         int rndnum = Random.Range (0, prioritiesSum);
         int i;
-	for (i = attacks.Count - 2; i>= 0; i--) {
+        for (i = attacks.Count - 2; i>= 0; i--) {
             if (prioritiesCumulative[i] <= rndnum) return attacks[i + 1];
         }
         return attacks[0];
+    }
+
+    // Set color transition effect shader for boss and environment objects
+    private void SetTransitionColorEffect(Color prev, Color next)
+    {
+        foreach (GameObject obj in gameObjectsToUseTransition)
+        {
+            if (obj == null) continue;
+            var material = obj.GetComponent<Renderer>().material;
+            material.SetColor("_ColorPrevious", prev);
+            material.SetColor("_ColorNext", next);
+            material.SetFloat("_TimeSinceTransitionStart", Time.time);
+        }
     }
 
     // Update is called once per frame
@@ -63,13 +78,7 @@ public class CuboidAttackManager : MonoBehaviour
             if (TTA < 0)
             {
                 currentAttack = ChooseAttack ();
-                foreach (GameObject obj in gameObjectsToUseTransition)
-                {
-                    var material = obj.GetComponent<Renderer>().material;
-                    material.SetColor("_ColorPrevious", baseColor);
-                    material.SetColor("_ColorNext", currentAttack.attackColor);
-                    material.SetFloat("_TimeSinceTransitionStart", Time.time);
-                }
+                SetTransitionColorEffect(baseColor, currentAttack.attackColor);
                 currentAttack.AttStart();
                 TTA = currentAttack.duration;
             }
@@ -80,17 +89,10 @@ public class CuboidAttackManager : MonoBehaviour
                 currentAttack.AttUpdate(TTA);
             } else {
                 currentAttack.AttEnd();
-                foreach (GameObject obj in gameObjectsToUseTransition)
-                {
-                    var material = obj.GetComponent<Renderer>().material;
-                    material.SetColor("_ColorPrevious", currentAttack.attackColor);
-                    material.SetColor("_ColorNext", baseColor);
-                    material.SetFloat("_TimeSinceTransitionStart", Time.time);
-                }
+                SetTransitionColorEffect(currentAttack.attackColor, baseColor);
                 currentAttack = null;
                 TTA = timeBetweenAttacks;
             }
         }
-
     }
 }

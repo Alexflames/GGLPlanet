@@ -19,8 +19,6 @@ public class LaserCubeLinesAttack : CuboidAttack
         }
     }
 
-    public Color startingColor; // Starting color for damaging lines
-
     public GameObject linesContainer;
     private CollidingPlayers collidingPlayers;
     List<GameObject> damagedPlayers;
@@ -106,6 +104,6 @@ public class LaserCubeLinesAttack : CuboidAttack
 
     void OnDestroy()
     {
-        //AttEnd();
+        AttEnd();
     }
 }
