@@ -15,7 +15,7 @@ public class LaserCubeLinesAttack : CuboidAttack
 
     public override int priority {
         get {
-            return 1;
+            return 2;
         }
     }
 

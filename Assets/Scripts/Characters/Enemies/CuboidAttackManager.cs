@@ -16,8 +16,18 @@ public class CuboidAttackManager : MonoBehaviour
     private List<CuboidAttack> attacks = new List<CuboidAttack> ();
     private CuboidAttack currentAttack;
 
-    public void RegisterAttack (CuboidAttack a) {
+    [SerializeField]
+    private bool priorityBasedChoosing;
+    private int prioritiesSum = 0;
+    private List<int> prioritiesCumulative = new List<int> ();
+
+    private void RegisterAttack (CuboidAttack a) {
         attacks.Add (a);
+        if (priorityBasedChoosing) {
+            int pr = a.priority > 0 ? a.priority : 0;
+            prioritiesCumulative.Add (prioritiesSum + pr);
+            prioritiesSum += pr;
+        }
     }
 
     public void InjurePlayer (GameObject target, int damage) {
@@ -34,8 +44,14 @@ public class CuboidAttackManager : MonoBehaviour
         }
     }
 
-    public CuboidAttack ChooseAttack () {
-        return attacks[Random.Range (0, attacks.Count)];
+    private CuboidAttack ChooseAttack () {
+        if (!priorityBasedChoosing) return attacks[Random.Range (0, attacks.Count)];
+        int rndnum = Random.Range (0, prioritiesSum);
+        int i;
+	for (i = attacks.Count - 2; i>= 0; i--) {
+            if (prioritiesCumulative[i] <= rndnum) return attacks[i + 1];
+        }
+        return attacks[0];
     }
 
     // Update is called once per frame
