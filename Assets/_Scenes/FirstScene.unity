@@ -15427,11 +15427,6 @@ PrefabInstance:
       propertyPath: gameObjectsToUseTransition.Array.data[1]
       value: 
       objectReference: {fileID: 229832113}
-    - target: {fileID: 5401115892304693892, guid: d46ec83210cc6ed428029a8e4de2635c,
-        type: 3}
-      propertyPath: Speed
-      value: 25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46ec83210cc6ed428029a8e4de2635c, type: 3}
 --- !u!1001 &5286695669096440440

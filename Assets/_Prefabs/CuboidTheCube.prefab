@@ -182,7 +182,7 @@ MonoBehaviour:
   serverOnly: 0
   localPlayerAuthority: 0
   m_AssetId: 
-  m_SceneId: 2401275021
+  m_SceneId: 2389881621
 --- !u!61 &4840411107766819906
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -257,8 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
-  Speed: 0.005
-  moveDir: {x: 0, y: 0}
+  Speed: 25
 --- !u!114 &1825650892727638995
 MonoBehaviour:
   m_ObjectHideFlags: 0
