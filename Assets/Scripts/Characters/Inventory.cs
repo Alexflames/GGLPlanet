@@ -9,6 +9,8 @@ public class Inventory : MonoBehaviour
     public GameObject cellContainer;
 
     private KeyCode showInventory = KeyCode.I;
+
+    private GameObject player;
     private void Start()
     {
         cellContainer.SetActive(false);
@@ -18,19 +20,25 @@ public class Inventory : MonoBehaviour
             items.Add(new ItemBase());
         }
     }
+
     private void Update()
     {
-        if(Input.GetKeyDown(showInventory))
+        if (!player)
         {
-            if(cellContainer.activeSelf)
+            player = GameObject.FindWithTag("Player");
+        }
+        else
+        {
+            if (Input.GetKeyDown(showInventory))
             {
-                cellContainer.SetActive(false);
-                Time.timeScale = 1f;
-            }
-            else
-            {
-                cellContainer.SetActive(true);
-                Time.timeScale = 0f;
+                if (cellContainer.activeSelf)
+                {
+                    cellContainer.SetActive(false);
+                }
+                else
+                {
+                    cellContainer.SetActive(true);
+                }
             }
         }
     }
