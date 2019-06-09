@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class NPCMovement
 {
-    private static readonly float standSpeedMul = 0.0005f;
+    private static readonly float standSpeedMul = 0.05f;
 
     public static Vector2 ChaoticMovement(float speed)
     {

@@ -10,17 +10,17 @@ public class BaddyLogic : NetworkBehaviour
     private Vector2 moveDir = new Vector2();
     private float timeToNextMove = 0.1f;
 
+    MoveController movement;
+
+    void Start()
+    {
+        movement = new ScaryCuboidMoveController(gameObject, Speed, 0.1f);
+    }
+
     void FixedUpdate()
     {
         if (!isServer) return;
 
-        if (timeToNextMove <= 0)
-        {
-            moveDir = NPCMovement.ChaoticMovementAdditive(moveDir, Speed);
-            timeToNextMove = Random.Range(0.1f, 0.35f);
-        }
-        timeToNextMove -= Time.fixedDeltaTime;
-
-        transform.Translate(moveDir);
+        movement.UpdateMove(Time.fixedDeltaTime);
     }
 }
