@@ -15,11 +15,9 @@ public class LaserCubeLinesAttack : CuboidAttack
 
     public override int priority {
         get {
-            return 1;
+            return 2;
         }
     }
-
-    public Color startingColor; // Starting color for damaging lines
 
     public GameObject linesContainer;
     private CollidingPlayers collidingPlayers;
@@ -106,6 +104,6 @@ public class LaserCubeLinesAttack : CuboidAttack
 
     void OnDestroy()
     {
-        //AttEnd();
+        AttEnd();
     }
 }
