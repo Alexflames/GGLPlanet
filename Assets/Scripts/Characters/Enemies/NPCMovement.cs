@@ -15,7 +15,7 @@ public static class NPCMovement
 
     public static Vector2 ChaoticMovementAdditive(Vector2 oldMove, float speed)
     {
-        var moveDir = oldMove + new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
+        var moveDir = oldMove * 0.6f + new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
         moveDir.Normalize();
         return moveDir * (speed * standSpeedMul);
     }
