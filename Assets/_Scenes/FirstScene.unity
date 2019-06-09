@@ -15412,11 +15412,6 @@ PrefabInstance:
       propertyPath: m_SceneId
       value: 3290432897
       objectReference: {fileID: 0}
-    - target: {fileID: 4366667610491442391, guid: d46ec83210cc6ed428029a8e4de2635c,
-        type: 3}
-      propertyPath: MaxHP
-      value: 45
-      objectReference: {fileID: 0}
     - target: {fileID: 7736430832848221412, guid: d46ec83210cc6ed428029a8e4de2635c,
         type: 3}
       propertyPath: gameObjectsToUseTransition.Array.data[0]
@@ -15427,21 +15422,11 @@ PrefabInstance:
       propertyPath: gameObjectsToUseTransition.Array.data[1]
       value: 
       objectReference: {fileID: 229832113}
-    - target: {fileID: 7736430832848221412, guid: d46ec83210cc6ed428029a8e4de2635c,
-        type: 3}
-      propertyPath: timeBetweenAttacks
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5292977313738885132, guid: d46ec83210cc6ed428029a8e4de2635c,
         type: 3}
       propertyPath: linesContainer
       value: 
       objectReference: {fileID: 905533445}
-    - target: {fileID: 5292977313738885132, guid: d46ec83210cc6ed428029a8e4de2635c,
-        type: 3}
-      propertyPath: sourceMaterialToCopy
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d46ec83210cc6ed428029a8e4de2635c, type: 3}
 --- !u!1001 &5286695669096440440

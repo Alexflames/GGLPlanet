@@ -97,7 +97,6 @@ GameObject:
   - component: {fileID: 1825650892727638995}
   - component: {fileID: 4366667610491442391}
   - component: {fileID: 7736430832848221412}
-  - component: {fileID: 1048214846002048653}
   - component: {fileID: 5292977313738885132}
   m_Layer: 9
   m_Name: CuboidTheCube
@@ -184,7 +183,7 @@ MonoBehaviour:
   serverOnly: 0
   localPlayerAuthority: 0
   m_AssetId: 
-  m_SceneId: 858334788
+  m_SceneId: 674775706
 --- !u!61 &4840411107766819906
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -414,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
-  MaxHP: 30
+  MaxHP: 45
   Invulnurable: 0
   invulTimeAfterHit: 0
 --- !u!114 &7736430832848221412
@@ -429,27 +428,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ecd04f953b997474956c493f5ad7e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenAttacks: 5
+  timeBetweenAttacks: 2
   baseColor: {r: 1, g: 1, b: 1, a: 1}
   gameObjectsToUseTransition:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 789480490752061138}
   priorityBasedChoosing: 0
---- !u!114 &1048214846002048653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4560393651033861866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cc7457b7eea19cd8bf692d51736a7a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDuration: 2
-  attColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!114 &5292977313738885132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,5 +449,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDuration: 2
   linesContainer: {fileID: 0}
-  sourceMaterialToCopy: {fileID: 0}
+  sourceMaterialToCopy: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   attColor: {r: 0.6148735, g: 0.17007832, b: 0.735849, a: 1}
