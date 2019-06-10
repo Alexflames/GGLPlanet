@@ -15,7 +15,7 @@ public class ScaryCuboidMoveController : MoveController
     {
         if (timeToNextMove <= 0)
         {
-            moveDir = NPCMovement.ChaoticMovementAdditive(moveDir, speed);
+            moveDir = NPCMovement.ChaoticMovementAdditive(moveDir, 0.5f, speed);
             timeToNextMove = Random.Range(0.1f, 0.35f);
         }
         timeToNextMove -= deltaTime;
