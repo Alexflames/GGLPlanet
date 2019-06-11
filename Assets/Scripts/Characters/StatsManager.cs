@@ -6,7 +6,7 @@ using Mirror;
 public class StatsManager : NetworkBehaviour
 {
     public int MaxHP = 5;
-    [SyncVar(hook = "HPChange")]
+    [SyncVar(hook = nameof(HPChange))]
     protected int CurrentHP;
 
     // "Can entity take damage" properties
