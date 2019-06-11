@@ -1,6 +1,7 @@
 using UnityEngine;
+using Mirror;
 
-public abstract class CuboidAttack : MonoBehaviour, Attack {
+public abstract class CuboidAttack : NetworkBehaviour, Attack {
     public abstract void AttStart();
     public abstract void AttUpdate(float attackTimeLeft);
     public abstract void AttEnd();
