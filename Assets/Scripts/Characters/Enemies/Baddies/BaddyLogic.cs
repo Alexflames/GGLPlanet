@@ -5,24 +5,22 @@ using Mirror;
 
 public class BaddyLogic : NetworkBehaviour
 {
-    public float Speed = 0.005f;
-
-    public Vector2 moveDir;
+    public float Speed = 25f;
+    
+    private Vector2 moveDir = new Vector2();
     private float timeToNextMove = 0.1f;
 
-    void Update()
+    MoveController movement;
+
+    void Start()
+    {
+        movement = new ScaryCuboidMoveController(gameObject, Speed, 0.1f);
+    }
+
+    void FixedUpdate()
     {
         if (!isServer) return;
 
-        if (timeToNextMove <= 0)
-        {
-            moveDir = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
-            moveDir.Normalize();
-            timeToNextMove = Random.Range(0.1f, 0.35f);
-        }
-
-        timeToNextMove -= Time.deltaTime;
-        
-        transform.Translate(moveDir * Speed);
+        movement.UpdateMove(Time.fixedDeltaTime);
     }
 }

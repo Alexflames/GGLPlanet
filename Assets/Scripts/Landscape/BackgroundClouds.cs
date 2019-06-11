@@ -48,7 +48,6 @@ public class BackgroundClouds : MonoBehaviour
                 cloud.transform.Translate(cloudMovemementVector * Time.fixedDeltaTime * cloudSpeed);
                 if (Vector3.Distance(cloud.transform.position, gameObject.transform.position) > cloudMovementLimit)
                 {
-                    print(Vector3.Distance(cloud.transform.position, gameObject.transform.position));
                     cloud.SetActive(false);
                 }
             }

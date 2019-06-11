@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class CuboidAttackManager : MonoBehaviour
+public class CuboidAttackManager : NetworkBehaviour
 {
     [SerializeField]
     private float timeBetweenAttacks = 5f;
