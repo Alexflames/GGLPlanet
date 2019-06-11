@@ -10,15 +10,22 @@ public class ExtremeBaddyBurst : NetworkBehaviour
 
     public GameObject bullet;
 
-    static int ARR_SIZE = 100;
-    public ExtremeBaddyProj[] bullets = new ExtremeBaddyProj[ARR_SIZE];
+    [SerializeField]
+    private int averageBulletCount = 5;
+    [SerializeField]
+    private int bulletLifeTime = 4;
+    [SerializeField]
+    private ExtremeBaddyProj[] bullets;
     int bulletArrayIndex = 0;
-
-    public int averageBulletCount = 5;
+    private int arrCapacity = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        // If we have 20 bullets per tick, then we have 20 / timeToNext bullets per second
+        // And we want to have bullets for at least bulletLifeTime seconds
+        arrCapacity = System.Convert.ToInt16(averageBulletCount / timeToNext) * bulletLifeTime;
+        bullets = new ExtremeBaddyProj[arrCapacity];
         TTNLeft = timeToNext;
     }
 
@@ -63,6 +70,8 @@ public class ExtremeBaddyBurst : NetworkBehaviour
         }
     }
 
+    // Bullets set themselves in cyclic format, when they reach the end of array, they
+    // return to its start, changing the oldest bullets
     private void InitializeBullet()
     {
         GameObject new_bullet = GameObject.Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
@@ -72,7 +81,7 @@ public class ExtremeBaddyBurst : NetworkBehaviour
         newBulletComp.damage = 1;
         NetworkServer.Spawn(new_bullet);
 
-        bulletArrayIndex = (bulletArrayIndex + 1) % ARR_SIZE;
+        bulletArrayIndex = (bulletArrayIndex + 1) % arrCapacity;
     }
 
     public void SetBullet(ExtremeBaddyProj bulletScr, int index)
@@ -80,9 +89,15 @@ public class ExtremeBaddyBurst : NetworkBehaviour
         bullets[index] = bulletScr;
     }
 
+    public void IncreaseAverageBullet(int value)
+    {
+        averageBulletCount += value;
+        
+    }
+
     void OnDestroy()
     {
-        for (int i = 0; i < ARR_SIZE; i++)
+        for (int i = 0; i < arrCapacity; i++)
         {
             if (bullets[i] != null)
             {
