@@ -183,7 +183,7 @@ MonoBehaviour:
   serverOnly: 0
   localPlayerAuthority: 0
   m_AssetId: 
-  m_SceneId: 4249181083
+  m_SceneId: 273440497
 --- !u!61 &4840411107766819906
 BoxCollider2D:
   m_ObjectHideFlags: 0
