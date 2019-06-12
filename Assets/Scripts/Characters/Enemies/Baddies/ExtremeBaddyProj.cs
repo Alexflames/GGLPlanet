@@ -16,7 +16,17 @@ public class ExtremeBaddyProj : NetworkBehaviour
 
     void Start()
     {
-        owner.GetComponent<ExtremeBaddyBurst>().SetBullet(this, index);
+        // TODO: TEMPORARY, CHANGE ON MASTER, EITHER DUPLICATE SCRIPTS OR DELETE EBB
+        var burst = owner.GetComponent<BurstAttack>();
+        if (burst)
+        {
+            owner.GetComponent<BurstAttack>().SetBullet(this, index);
+        }
+        else
+        {
+            owner.GetComponent<ExtremeBaddyBurst>().SetBullet(this, index);
+        }
+        
     }
 
     public void UpdateProjectile()
