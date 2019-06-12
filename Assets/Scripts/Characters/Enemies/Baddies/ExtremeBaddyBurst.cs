@@ -16,7 +16,7 @@ public class ExtremeBaddyBurst : NetworkBehaviour
     private int bulletLifeTime = 4;
     [SerializeField]
     private ExtremeBaddyProj[] bullets;
-    int bulletArrayIndex = 0;
+    private int bulletArrayIndex = 0;
     private int arrCapacity = 0;
 
     // Start is called before the first frame update
@@ -46,7 +46,7 @@ public class ExtremeBaddyBurst : NetworkBehaviour
         if (isServer)
         {
             UpdateBullets();
-            TTNLeft -= Time.deltaTime;
+            TTNLeft -= Time.fixedDeltaTime;
             
             if (TTNLeft < 0)
             {

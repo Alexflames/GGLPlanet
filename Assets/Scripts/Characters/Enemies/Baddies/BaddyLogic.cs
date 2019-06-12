@@ -5,16 +5,16 @@ using Mirror;
 
 public class BaddyLogic : NetworkBehaviour
 {
-    public float Speed = 25f;
+    [SerializeField]
+    private float Speed = 25f;
     
-    private Vector2 moveDir = new Vector2();
     private float timeToNextMove = 0.1f;
 
     MoveController movement;
 
     void Start()
     {
-        movement = new ScaryCuboidMoveController(gameObject, Speed, 0.1f);
+        movement = new ScaryCuboidMoveController(gameObject, Speed, timeToNextMove);
     }
 
     void FixedUpdate()

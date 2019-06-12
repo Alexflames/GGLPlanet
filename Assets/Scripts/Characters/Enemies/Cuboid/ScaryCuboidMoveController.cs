@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScaryCuboidMoveController : MoveController
 {
-    float timeToNextMove;
+    private float timeToNextMove;
     public ScaryCuboidMoveController(GameObject character, float speed, float timeToFirstMove) : base(character, speed)
     {
         timeToNextMove = timeToFirstMove;

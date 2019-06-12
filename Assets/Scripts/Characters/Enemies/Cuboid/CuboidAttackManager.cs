@@ -12,15 +12,15 @@ public class CuboidAttackManager : NetworkBehaviour
     [SerializeField]
     private Color baseColor = Color.white;
     [SerializeField]
-    private GameObject[] gameObjectsToUseTransition;
+    private GameObject[] gameObjectsToUseTransition = null;
 
     private List<CuboidAttack> attacks = new List<CuboidAttack> ();
-    private CuboidAttack currentAttack;
+    public CuboidAttack currentAttack;
 
     
     [SerializeField]
     // Should some attacks have more priority over others
-    private bool priorityBasedChoosing;
+    private bool priorityBasedChoosing = false;
     private int prioritiesSum = 0;
     private List<int> prioritiesCumulative = new List<int> ();
 
@@ -71,7 +71,7 @@ public class CuboidAttackManager : NetworkBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    public void UpdateAttack()
     {
         if (attacks.Count == 0) return;
         TTA -= Time.fixedDeltaTime;
