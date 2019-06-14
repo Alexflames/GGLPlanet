@@ -6,13 +6,15 @@ public class PlayerAbilityManager : NetworkBehaviour
     [SerializeField]
     private PlayerAbility ability;
 
-    private void Start() {
+    private void Start()
+    {
         energyMax = 100;
         energy = energyMax;
         energyGainPerSecond = 5;
     }
 
-    private void Update() {
+    private void Update()
+    {
         if (Input.GetButtonDown("Jump"))
         {
             if (ability.IsActive == false)
@@ -30,19 +32,18 @@ public class PlayerAbilityManager : NetworkBehaviour
         }
     }
 
-    private void FixedUpdate() {
-        energy += energyGainPerSecond / Time.fixedDeltaTime;
-        if (energy > energyMax)
-        {
-            energy = energyMax;
-        }
+    private void FixedUpdate()
+    {
+        energy = Mathf.Min(energy + energyGainPerSecond / Time.fixedDeltaTime);
+        ability.FixedUpdateCall();
     }
 
-    private void OnDisable() {
+    private void OnDisable()
+    {
         ability.ForceBreak();
     }
 
-    private double energy;
-    private double energyMax;
-    private double energyGainPerSecond;
+    private float energy;
+    private float energyMax;
+    private float energyGainPerSecond;
 }

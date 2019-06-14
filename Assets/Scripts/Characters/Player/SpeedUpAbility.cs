@@ -28,12 +28,14 @@ public class SpeedUpAbility : PlayerAbility
         get { return energyCost; }
     }
 
-    private void Start() {
+    private void Start()
+    {
         isActive = false;
         energyCost = 50;
     }
 
-    private void FixedUpdate() {
+    public override void FixedUpdateCall()
+    {
         if (abilityDurationRemaining > 0)
         {
             abilityDurationRemaining -= Time.fixedDeltaTime;
