@@ -55,8 +55,8 @@ public class CuboidMainLogic : NetworkBehaviour
                 {
                     currentMoveController = followPlayerMovement;
                     followPlayerMovement.SetTarget(GameObject.FindGameObjectsWithTag("Player")[0].transform);
-                    // make follow mode 4 times slower than random, cause it is more scary
-                    moveSwitchModeTimer = changeMoveModeStartTimer / 4;
+                    // make follow mode 1.5 times longer than random, cause it is more scary and fun
+                    moveSwitchModeTimer = changeMoveModeStartTimer * 1.5f;
                 }
                 else
                 {
