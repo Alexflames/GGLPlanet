@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-public abstract class PlayerAbility : MonoBehaviour
+public abstract class PlayerAbility : Object
 {
     // Called when the ability is initialized by the ability manager
-    public abstract void StartCall();
+    public abstract void Init();
 
     // Called when the ability is activated by player
     public abstract void Activate();

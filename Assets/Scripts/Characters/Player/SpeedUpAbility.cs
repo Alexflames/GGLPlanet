@@ -8,10 +8,9 @@ public class SpeedUpAbility : PlayerAbility
     [SerializeField]
     private float abilityDuration = 5;
 
-    public override void StartCall()
+    public override void Init()
     {
         isActive = false;
-        energyCost = 50;
     }
 
     public override void Activate()
@@ -53,6 +52,6 @@ public class SpeedUpAbility : PlayerAbility
         get { return energyCost; }
     }
 
-    private bool isActive;
+    private bool isActive = false;
     private float abilityDurationRemaining = 0;
 }

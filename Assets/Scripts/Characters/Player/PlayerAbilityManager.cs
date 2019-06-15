@@ -3,15 +3,15 @@ using Mirror;
 
 public class PlayerAbilityManager : NetworkBehaviour
 {
-    [SerializeField]
-    private PlayerAbility ability = null;
+    private PlayerAbility ability;
 
     private void Start()
     {
         energyMax = 100;
         energy = energyMax;
         energyGainPerSecond = 5;
-        ability.StartCall();
+        ability = new SpeedUpAbility();
+        ability.Init();
     }
 
     private void Update()
