@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class PlayerAbility : Object
+public abstract class PlayerAbility
 {
     // Called when the ability is initialized by the ability manager
     public abstract void Init();
