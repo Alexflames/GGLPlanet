@@ -2,6 +2,18 @@
 
 public class SpeedUpAbility : PlayerAbility
 {
+    [SerializeField]
+    private int energyCost = 50;
+
+    [SerializeField]
+    private float abilityDuration = 5;
+
+    public override void StartCall()
+    {
+        isActive = false;
+        energyCost = 50;
+    }
+
     public override void Activate()
     {
         isActive = true;
@@ -10,28 +22,8 @@ public class SpeedUpAbility : PlayerAbility
 
     public override void Deactivate()
     {
-        
-    }
-
-    public override void ForceBreak()
-    {
-
-    }
-
-    public override bool IsActive
-    {
-        get { return isActive; }
-    }
-
-    public override int EnergyCost
-    {
-        get { return energyCost; }
-    }
-
-    private void Start()
-    {
-        isActive = false;
-        energyCost = 50;
+        // This is left empty because the player won't be able to deactivate
+        // the ability manually
     }
 
     public override void FixedUpdateCall()
@@ -46,8 +38,21 @@ public class SpeedUpAbility : PlayerAbility
         }
     }
 
+    public override void ForceBreak()
+    {
+        isActive = false;
+    }
+
+    public override bool IsActive
+    {
+        get { return isActive; }
+    }
+
+    public override int EnergyCost
+    {
+        get { return energyCost; }
+    }
+
     private bool isActive;
-    private int energyCost;
-    private double abilityDuration;
-    private double abilityDurationRemaining;
+    private float abilityDurationRemaining = 0;
 }

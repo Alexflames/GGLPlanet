@@ -4,13 +4,14 @@ using Mirror;
 public class PlayerAbilityManager : NetworkBehaviour
 {
     [SerializeField]
-    private PlayerAbility ability;
+    private PlayerAbility ability = null;
 
     private void Start()
     {
         energyMax = 100;
         energy = energyMax;
         energyGainPerSecond = 5;
+        ability.StartCall();
     }
 
     private void Update()
