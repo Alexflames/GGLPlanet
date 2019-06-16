@@ -15,9 +15,8 @@ public class CuboidAttackManager : NetworkBehaviour
     private GameObject[] gameObjectsToUseTransition = null;
 
     private List<CuboidAttack> attacks = new List<CuboidAttack> ();
-    public CuboidAttack currentAttack;
+    public CuboidAttack CurrentAttack { get; private set; }
 
-    
     [SerializeField]
     // Should some attacks have more priority over others
     private bool priorityBasedChoosing = false;
@@ -45,6 +44,11 @@ public class CuboidAttackManager : NetworkBehaviour
         foreach (CuboidAttack a in foundAttacks) {
             RegisterAttack (a);
         }
+    }
+
+    public bool IsAttacking()
+    {
+        return CurrentAttack != null;
     }
 
     private CuboidAttack ChooseAttack () {
@@ -75,23 +79,23 @@ public class CuboidAttackManager : NetworkBehaviour
     {
         if (attacks.Count == 0) return;
         TTA -= Time.fixedDeltaTime;
-        if (currentAttack == null) {
+        if (CurrentAttack == null) {
             if (TTA < 0)
             {
-                currentAttack = ChooseAttack ();
-                SetTransitionColorEffect(baseColor, currentAttack.attackColor);
-                currentAttack.AttStart();
-                TTA = currentAttack.duration;
+                CurrentAttack = ChooseAttack ();
+                SetTransitionColorEffect(baseColor, CurrentAttack.attackColor);
+                CurrentAttack.AttStart();
+                TTA = CurrentAttack.duration;
             }
         }
         else {
             if (TTA > 0)
             {
-                currentAttack.AttUpdate(TTA);
+                CurrentAttack.AttUpdate(TTA);
             } else {
-                currentAttack.AttEnd();
-                SetTransitionColorEffect(currentAttack.attackColor, baseColor);
-                currentAttack = null;
+                CurrentAttack.AttEnd();
+                SetTransitionColorEffect(CurrentAttack.attackColor, baseColor);
+                CurrentAttack = null;
                 TTA = timeBetweenAttacks;
             }
         }

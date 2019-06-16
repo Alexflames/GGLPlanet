@@ -9,7 +9,7 @@ public class BurstAttack : CuboidAttack
     private float TTNLeft;
 
     [SerializeField]
-    private GameObject bulletPrefab;
+    private GameObject bulletPrefab = null;
 
     [SerializeField]
     private int averageBulletCount = 5;
@@ -126,10 +126,9 @@ public class BurstAttack : CuboidAttack
         bullets[index] = bulletScr;
     }
 
-    public void IncreaseAverageBullet(int value)
+    public void IncreaseAverageBulletCount(int value)
     {
         averageBulletCount += value;
-
     }
 
     // TODO: CAN BE UPGRADED TO EITHER LETTING BULLETS CONTINUE FLYING

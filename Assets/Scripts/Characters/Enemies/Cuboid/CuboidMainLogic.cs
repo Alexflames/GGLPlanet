@@ -42,7 +42,7 @@ public class CuboidMainLogic : NetworkBehaviour
         if (!isServer) return;
 
         // In-between attacks (movement logic)
-        if (attackManager.currentAttack == null)
+        if (!attackManager.IsAttacking())
         {
             // update move only if no current attack is active
             currentMoveController.UpdateMove(Time.fixedDeltaTime);
