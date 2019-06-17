@@ -1,21 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class ItemBase
+[CreateAssetMenu(menuName = "Item")]
+public class ItemBase : MonoBehaviour
 {
-    public string NameOfItem;
+    public enum ItemType
+    {
+        Ammunition,
+        UsableItem,
+        Clothes
+    }
 
-    public int id;
+    public string NameOfItem = "";
 
-    public int countItem;
+    public int id = 0;
 
-    public bool IsStackable;
+    public int countItem = 0;
+
+    public bool IsStackable = false;
 
     [Multiline(4)]
-    public string DescriptionItem;
+    public string DescriptionItem = "";
 
-    public string pathIcon;
+    public string pathIcon = "";
 
-    public string pathPrefab;
+    public ItemType Itemtype;
 }
