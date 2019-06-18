@@ -100,4 +100,9 @@ public class CuboidAttackManager : NetworkBehaviour
             }
         }
     }
+
+    private void OnDestroy()
+    {
+        SetTransitionColorEffect(baseColor, Color.black);
+    }
 }

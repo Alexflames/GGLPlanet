@@ -1100,6 +1100,16 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2628082676914839321, guid: 92b3f7d5a87b0e441815fbe9d6afa205,
+        type: 3}
+      propertyPath: gameObjectsToUseTransition.Array.data[0]
+      value: 
+      objectReference: {fileID: 441443188}
+    - target: {fileID: 2628082676914839321, guid: 92b3f7d5a87b0e441815fbe9d6afa205,
+        type: 3}
+      propertyPath: gameObjectsToUseTransition.Array.data[1]
+      value: 
+      objectReference: {fileID: 229832113}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92b3f7d5a87b0e441815fbe9d6afa205, type: 3}
 --- !u!1 &235156275
