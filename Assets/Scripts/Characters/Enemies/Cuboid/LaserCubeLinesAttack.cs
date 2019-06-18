@@ -52,6 +52,7 @@ public class LaserCubeLinesAttack : CuboidAttack
 
     public override void AttStart()
     {
+        linesContainer.SetActive(true);
         rotationRNG = Random.Range(-90, 90);
         damagedPlayers = new List<GameObject>();
     }
@@ -100,6 +101,7 @@ public class LaserCubeLinesAttack : CuboidAttack
                                 sharedLineMaterial.color.g,
                                 sharedLineMaterial.color.b,
                                 1);
+        linesContainer.SetActive(false);
     }
 
     void OnDestroy()
