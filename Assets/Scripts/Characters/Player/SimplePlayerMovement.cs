@@ -5,10 +5,13 @@ using Mirror;
 
 public class SimplePlayerMovement : NetworkBehaviour
 {
-    public float Speed = 25;
-    readonly float _baseSpeedBySecond = 250;
+    [SerializeField]
+    private float Speed = 25;
+    private readonly float _baseSpeedBySecond = 250;
 
     private SpriteRenderer _sprite;
+    [SerializeField]
+    private List<SpriteRenderer> spritesToFlip = new List<SpriteRenderer>();
 
     void Start()
     {
@@ -24,7 +27,17 @@ public class SimplePlayerMovement : NetworkBehaviour
     [ClientRpc]
     void RpcFlipSprite(bool flipX)
     {
-        _sprite.flipX = flipX;
+        if (spritesToFlip.Count == 0)
+        {
+            _sprite.flipX = flipX;
+        }
+        else
+        {
+            foreach (var sprite in spritesToFlip)
+            {
+                sprite.flipX = flipX;
+            }
+        }
     }
 
     void Move(Vector2 direction)
@@ -47,7 +60,6 @@ public class SimplePlayerMovement : NetworkBehaviour
             if (direction.x != 0)
             {
                 bool isFlipNeeded = Mathf.Sign(direction.x) == 1 ? false : true;
-                _sprite.flipX = isFlipNeeded;
                 CmdFlipSprite(isFlipNeeded);
             }
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1309057660}
   - component: {fileID: 1309057661}
   m_Layer: 9
-  m_Name: WeaponVisual
+  m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309057659}
-  m_LocalRotation: {x: 0.00033352803, y: 0.0006494845, z: 0.014620601, w: 0.9998929}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.026, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5477706564576576499}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0.037, y: 0.075, z: 1.6750001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1309057661
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -68,7 +68,86 @@ SpriteRenderer:
   m_SortingLayerID: -1006547795
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 0e5c4451b72845143b25ff007d56fe89, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 20e048c3b4ee6a54792052679d390a0f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &2002161553394040105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4551532064220866629}
+  - component: {fileID: 2101357048454328663}
+  m_Layer: 9
+  m_Name: Hando
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4551532064220866629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002161553394040105}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5477706564576576499}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2101357048454328663
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002161553394040105}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1006547795
+  m_SortingLayer: 1
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 3a10e17785111484abc087502d50190f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -169,8 +248,23 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 27d34bce87f4f00408fefc3b67fd5fee,
+      objectReference: {fileID: 21300000, guid: 2ff9cb82df142bf498b5ec7a5e83d659,
         type: 3}
+    - target: {fileID: 780128714864221076, guid: 6915a878c0bab9846b55f21437d15d96,
+        type: 3}
+      propertyPath: spritesToFlip.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 780128714864221076, guid: 6915a878c0bab9846b55f21437d15d96,
+        type: 3}
+      propertyPath: spritesToFlip.Array.data[0]
+      value: 
+      objectReference: {fileID: 5477706564576576498}
+    - target: {fileID: 780128714864221076, guid: 6915a878c0bab9846b55f21437d15d96,
+        type: 3}
+      propertyPath: spritesToFlip.Array.data[1]
+      value: 
+      objectReference: {fileID: 2101357048454328663}
     - target: {fileID: 626876996, guid: 6915a878c0bab9846b55f21437d15d96, type: 3}
       propertyPath: projectile
       value: 
@@ -209,6 +303,12 @@ GameObject:
 --- !u!4 &5477706564576576499 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 780128714864221079, guid: 6915a878c0bab9846b55f21437d15d96,
+    type: 3}
+  m_PrefabInstance: {fileID: 5104597046765672548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &5477706564576576498 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 780128714864221078, guid: 6915a878c0bab9846b55f21437d15d96,
     type: 3}
   m_PrefabInstance: {fileID: 5104597046765672548}
   m_PrefabAsset: {fileID: 0}
