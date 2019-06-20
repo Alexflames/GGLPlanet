@@ -5,13 +5,9 @@ using UnityEngine;
 
 public class CollectableItems : MonoBehaviour
 {
-    private KeyCode collectItems = KeyCode.F;
-
     public Inventory Inventory1;
 
-    private Collider2D collider2d;
-
-    private List<Collider2D> Collider2Ds = new List<Collider2D>();
+    private List<ItemBase> ItemBases = new List<ItemBase>();
 
     private void Start()
     {
@@ -23,7 +19,7 @@ public class CollectableItems : MonoBehaviour
         ItemBase item = collider.GetComponent<ItemBase>();
         if(item)
         {
-            Collider2Ds.Add(collider);
+            ItemBases.Add(item);
         }
     }
 
@@ -34,27 +30,24 @@ public class CollectableItems : MonoBehaviour
             ItemBase item = collider.GetComponent<ItemBase>();
             if (item)
             {
-                for (int i = 0; i < Collider2Ds.Count; i++)
+                for (int i = 0; i < ItemBases.Count; i++)
                 {
-                    if (Collider2Ds[i] == collider)
+                    if (ItemBases[i] == item)
                     {
-                        Collider2Ds.RemoveAt(i);
+                        ItemBases.RemoveAt(i);
                     }
                 }
             }
         }
     }
 
-    private void Update()
+    public void Control()
     {
-        if(Input.GetKeyDown(collectItems))
+        if (ItemBases.Count > 0)
         {
-            if (Collider2Ds.Count > 0)
-            {
-                ItemBase item = Collider2Ds[0].GetComponent<ItemBase>();
-                Inventory1.NewItem = item;
-                Destroy(Collider2Ds[0].gameObject);
-            }
+            ItemBase item = ItemBases[0];
+            Inventory1.CollectItems(item);
+            Destroy(ItemBases[0].gameObject);
         }
     }
 

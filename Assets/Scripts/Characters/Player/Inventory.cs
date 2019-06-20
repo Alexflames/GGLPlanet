@@ -7,36 +7,27 @@ public class Inventory : MonoBehaviour
 {
     private List<ItemBase> items;
 
-    public GameObject cellContainerPrefab;
-
     private KeyCode showInventory = KeyCode.I;
-
-    private GameObject player;
+    private KeyCode collectItems = KeyCode.F;
 
     private GameObject cellContainer;
-
     private GameObject Canvas;
+    public GameObject cellContainerPrefab;
 
-    private ItemBase newItem = null;
-
-    public ItemBase NewItem
-    { set
-        {
-            newItem = value;
-            CollectItems();
-        }
-    }
+    private CollectableItems CollectableItems;
 
     private void Start()
     {
+        CollectableItems = GetComponentInChildren<CollectableItems>();
+
         Canvas = GameObject.Find("Canvas");
         cellContainer = Instantiate(cellContainerPrefab, Canvas.transform.position, Quaternion.identity) as GameObject;
         cellContainer.transform.SetParent(Canvas.transform);
 
         items = new List<ItemBase>();
         for (int i = 0; i < cellContainer.transform.childCount; i++)
-        {
-            items.Add(new ItemBase());
+        { 
+            items.Add(cellContainer.transform.GetChild(i).GetComponent<ItemBase>());
         }
         cellContainer.SetActive(false);
     }
@@ -59,9 +50,13 @@ public class Inventory : MonoBehaviour
                 cellContainer.SetActive(true);
             }
         }
+        if(Input.GetKeyDown(collectItems))
+        {
+            CollectableItems.Control();
+        }
     }
 
-    private void CollectItems()
+    public void CollectItems(ItemBase newItem)
     { 
         if (newItem != null)
         {
