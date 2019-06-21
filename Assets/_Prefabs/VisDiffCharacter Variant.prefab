@@ -28,7 +28,7 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.026, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5477706564576576499}
+  m_Father: {fileID: 5104597046765672507}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1309057661
@@ -107,7 +107,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5477706564576576499}
+  m_Father: {fileID: 5104597046765672507}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2101357048454328663
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5477706564576576397}
+  m_GameObject: {fileID: 5104597046765672536}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bda529d3a968a204e99f2f85d36fde98, type: 3}
@@ -259,7 +259,7 @@ PrefabInstance:
         type: 3}
       propertyPath: spritesToFlip.Array.data[0]
       value: 
-      objectReference: {fileID: 5477706564576576498}
+      objectReference: {fileID: 5104597046765672649}
     - target: {fileID: 780128714864221076, guid: 6915a878c0bab9846b55f21437d15d96,
         type: 3}
       propertyPath: spritesToFlip.Array.data[1]
@@ -294,19 +294,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6915a878c0bab9846b55f21437d15d96, type: 3}
---- !u!1 &5477706564576576397 stripped
+--- !u!1 &5104597046765672536 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 780128714864221161, guid: 6915a878c0bab9846b55f21437d15d96,
     type: 3}
   m_PrefabInstance: {fileID: 5104597046765672548}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &5477706564576576499 stripped
+--- !u!4 &5104597046765672507 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 780128714864221079, guid: 6915a878c0bab9846b55f21437d15d96,
     type: 3}
   m_PrefabInstance: {fileID: 5104597046765672548}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &5477706564576576498 stripped
+--- !u!212 &5104597046765672649 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 780128714864221078, guid: 6915a878c0bab9846b55f21437d15d96,
     type: 3}

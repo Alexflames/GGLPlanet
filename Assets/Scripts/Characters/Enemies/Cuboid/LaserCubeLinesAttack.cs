@@ -19,7 +19,9 @@ public class LaserCubeLinesAttack : CuboidAttack
         }
     }
 
-    public GameObject linesContainer;
+    [SerializeField]
+    private GameObject linesContainerPrefab = null;
+    private GameObject linesContainer;
     private CollidingPlayers collidingPlayers;
     List<GameObject> damagedPlayers;
     public Material sourceMaterialToCopy;
@@ -40,6 +42,8 @@ public class LaserCubeLinesAttack : CuboidAttack
     // Start is called before the first frame update
     void Start()
     {
+        linesContainer = Instantiate(linesContainerPrefab, transform.position, Quaternion.identity);
+        linesContainer.SetActive(false);
         sharedLineMaterial = new Material(sourceMaterialToCopy);
         var renderers = linesContainer.GetComponentsInChildren<SpriteRenderer>();
         foreach (Renderer rend in renderers)
@@ -95,13 +99,19 @@ public class LaserCubeLinesAttack : CuboidAttack
 
     public override void AttEnd()
     {
-        sharedLineMaterial.color =
-                            new Color(
-                                sharedLineMaterial.color.r,
-                                sharedLineMaterial.color.g,
-                                sharedLineMaterial.color.b,
-                                1);
-        linesContainer.SetActive(false);
+        if (sharedLineMaterial != null)
+        {
+            sharedLineMaterial.color =
+                                new Color(
+                                    sharedLineMaterial.color.r,
+                                    sharedLineMaterial.color.g,
+                                    sharedLineMaterial.color.b,
+                                    1);
+        }
+        if (linesContainer != null)
+        {
+            linesContainer.SetActive(false);
+        }
     }
 
     void OnDestroy()

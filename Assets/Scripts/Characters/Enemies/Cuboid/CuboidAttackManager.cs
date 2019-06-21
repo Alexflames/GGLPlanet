@@ -77,6 +77,13 @@ public class CuboidAttackManager : NetworkBehaviour
     // Update is called once per frame
     public void UpdateAttack()
     {
+        if (isLocalPlayer)
+        {
+
+        }
+
+        if (!isServer) return;
+
         if (attacks.Count == 0) return;
         TTA -= Time.fixedDeltaTime;
         if (CurrentAttack == null) {
