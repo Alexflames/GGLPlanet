@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
     private GameObject Canvas;
     public GameObject cellContainerPrefab;
 
-    private CollectableItems CollectableItems;
+    private CollectableItems collectableItems;
 
     private void Start()
     {
