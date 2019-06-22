@@ -11,6 +11,9 @@ public abstract class PlayerAbility
     // Called when the ability is deactivated by player, if it's possible
     public abstract void Deactivate();
 
+    // Updates the player stats
+    public abstract void UpdateStats(PlayerStatMod statMod);
+
     // Called by an ability manager every fixed update call
     public abstract void FixedUpdateCall();
 

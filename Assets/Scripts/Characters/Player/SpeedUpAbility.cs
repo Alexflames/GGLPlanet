@@ -25,6 +25,14 @@ public class SpeedUpAbility : PlayerAbility
         // the ability manually
     }
 
+    public override void UpdateStats(PlayerStatMod statMod)
+    {
+        if (isActive)
+        {
+            statMod.SpeedMul *= 1.5f;
+        }
+    }
+
     public override void FixedUpdateCall()
     {
         if (abilityDurationRemaining > 0)

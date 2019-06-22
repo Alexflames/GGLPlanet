@@ -12,6 +12,7 @@ public class PlayerAbilityManager : NetworkBehaviour
         energyGainPerSecond = 5;
         ability = new SpeedUpAbility();
         ability.Init();
+        UpdateStats();
     }
 
     private void Update()
@@ -24,11 +25,13 @@ public class PlayerAbilityManager : NetworkBehaviour
                 {
                     energy -= ability.EnergyCost;
                     ability.Activate();
+                    UpdateStats();
                 }
             }
             else
             {
                 ability.Deactivate();
+                UpdateStats();
             }
         }
     }
@@ -42,9 +45,17 @@ public class PlayerAbilityManager : NetworkBehaviour
     private void OnDisable()
     {
         ability.ForceBreak();
+        UpdateStats();
+    }
+
+    private void UpdateStats()
+    {
+        statMod.Reset();
+        ability.UpdateStats(statMod);
     }
 
     private float energy;
     private float energyMax;
     private float energyGainPerSecond;
+    private PlayerStatMod statMod;
 }
