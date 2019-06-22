@@ -18,7 +18,7 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        CollectableItems = GetComponentInChildren<CollectableItems>();
+        collectableItems = GetComponentInChildren<CollectableItems>();
 
         Canvas = GameObject.Find("Canvas");
         cellContainer = Instantiate(cellContainerPrefab, Canvas.transform.position, Quaternion.identity) as GameObject;
