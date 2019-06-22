@@ -52,7 +52,7 @@ public class Inventory : MonoBehaviour
         }
         if(Input.GetKeyDown(collectItems))
         {
-            CollectableItems.Control();
+            collectableItems.Control();
         }
     }
 
