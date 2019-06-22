@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class ExtremeBaddyBurst : NetworkBehaviour
+public class BurstAttack : CuboidAttack
 {
     private float timeToNext = 0.25f;
     private float TTNLeft;
 
-    public GameObject bullet;
+    [SerializeField]
+    private GameObject bulletPrefab = null;
 
     [SerializeField]
     private int averageBulletCount = 5;
@@ -19,14 +20,49 @@ public class ExtremeBaddyBurst : NetworkBehaviour
     private int bulletArrayIndex = 0;
     private int arrCapacity = 0;
 
+    // Movement during attack
+    [SerializeField]
+    private float moveSpeedDuringAttack = 20;
+    private ScaryCuboidMoveController moveCtrl;
+
+    // Cuboid-attack-specific properties
+    [SerializeField]
+    private Color attColor = Color.yellow;
+    public override Color attackColor
+    {
+        get
+        {
+            return attColor;
+        }
+    }
+
+    [SerializeField]
+    private float attackDuration = 5f;
+    public override float duration
+    {
+        get
+        {
+            return attackDuration;
+        }
+    }
+
+    public override int priority
+    {
+        get
+        {
+            return 2;
+        }
+    }
+
     // Start is called before the first frame update
-    void Start()
+    public override void AttStart()
     {
         // If we have 20 bullets per tick, then we have 20 / timeToNext bullets per second
         // And we want to have bullets for at least bulletLifeTime seconds
         arrCapacity = System.Convert.ToInt16(averageBulletCount / timeToNext) * bulletLifeTime;
         bullets = new ExtremeBaddyProj[arrCapacity];
         TTNLeft = timeToNext;
+        moveCtrl = new ScaryCuboidMoveController(gameObject, moveSpeedDuringAttack, 0.1f);
     }
 
     void UpdateBullets()
@@ -41,13 +77,14 @@ public class ExtremeBaddyBurst : NetworkBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    public override void AttUpdate(float attackTimeLeft)
     {
         if (isServer)
         {
+            moveCtrl.UpdateMove(Time.fixedDeltaTime);
             UpdateBullets();
             TTNLeft -= Time.fixedDeltaTime;
-            
+
             if (TTNLeft < 0)
             {
                 TTNLeft = timeToNext;
@@ -74,7 +111,7 @@ public class ExtremeBaddyBurst : NetworkBehaviour
     // return to its start, changing the oldest bullets
     private void InitializeBullet()
     {
-        GameObject new_bullet = GameObject.Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+        GameObject new_bullet = GameObject.Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
         var newBulletComp = new_bullet.GetComponent<ExtremeBaddyProj>();
         newBulletComp.index = bulletArrayIndex;
         newBulletComp.owner = gameObject;
@@ -89,10 +126,16 @@ public class ExtremeBaddyBurst : NetworkBehaviour
         bullets[index] = bulletScr;
     }
 
-    public void IncreaseAverageBullet(int value)
+    public void IncreaseAverageBulletCount(int value)
     {
         averageBulletCount += value;
-        
+    }
+
+    // TODO: CAN BE UPGRADED TO EITHER LETTING BULLETS CONTINUE FLYING
+    // OR SLOWLY MAKE THEM FADE OUT
+    public override void AttEnd() {
+        OnDestroy();
+        bulletArrayIndex = 0;
     }
 
     void OnDestroy()

@@ -99,7 +99,7 @@ MonoBehaviour:
   owner: {fileID: 0}
   index: 0
   damage: 0
-  speed: 40
+  speed: 60
 --- !u!61 &-5761748097905922779
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -162,4 +162,4 @@ MonoBehaviour:
   serverOnly: 0
   localPlayerAuthority: 0
   m_AssetId: 
-  m_SceneId: 1638754969
+  m_SceneId: 3037977785
