@@ -12,15 +12,14 @@ public class CuboidAttackManager : NetworkBehaviour
     [SerializeField]
     private Color baseColor = Color.white;
     [SerializeField]
-    private GameObject[] gameObjectsToUseTransition;
+    private GameObject[] gameObjectsToUseTransition = null;
 
     private List<CuboidAttack> attacks = new List<CuboidAttack> ();
-    private CuboidAttack currentAttack;
+    public CuboidAttack CurrentAttack { get; private set; }
 
-    
     [SerializeField]
     // Should some attacks have more priority over others
-    private bool priorityBasedChoosing;
+    private bool priorityBasedChoosing = false;
     private int prioritiesSum = 0;
     private List<int> prioritiesCumulative = new List<int> ();
 
@@ -47,6 +46,11 @@ public class CuboidAttackManager : NetworkBehaviour
         }
     }
 
+    public bool IsAttacking()
+    {
+        return CurrentAttack != null;
+    }
+
     private CuboidAttack ChooseAttack () {
         if (!priorityBasedChoosing) return attacks[Random.Range (0, attacks.Count)];
         int rndnum = Random.Range (0, prioritiesSum);
@@ -71,27 +75,27 @@ public class CuboidAttackManager : NetworkBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    public void UpdateAttack()
     {
         if (attacks.Count == 0) return;
         TTA -= Time.fixedDeltaTime;
-        if (currentAttack == null) {
+        if (CurrentAttack == null) {
             if (TTA < 0)
             {
-                currentAttack = ChooseAttack ();
-                SetTransitionColorEffect(baseColor, currentAttack.attackColor);
-                currentAttack.AttStart();
-                TTA = currentAttack.duration;
+                CurrentAttack = ChooseAttack ();
+                SetTransitionColorEffect(baseColor, CurrentAttack.attackColor);
+                CurrentAttack.AttStart();
+                TTA = CurrentAttack.duration;
             }
         }
         else {
             if (TTA > 0)
             {
-                currentAttack.AttUpdate(TTA);
+                CurrentAttack.AttUpdate(TTA);
             } else {
-                currentAttack.AttEnd();
-                SetTransitionColorEffect(currentAttack.attackColor, baseColor);
-                currentAttack = null;
+                CurrentAttack.AttEnd();
+                SetTransitionColorEffect(CurrentAttack.attackColor, baseColor);
+                CurrentAttack = null;
                 TTA = timeBetweenAttacks;
             }
         }

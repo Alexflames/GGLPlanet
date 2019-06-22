@@ -50,7 +50,7 @@ public static class NPCMovement
     /// <returns>Next vector for Translate() with values based on 1 real-time second</returns>
     public static Vector2 DirectionalMovement(Vector2 dir, float speed)
     {
-        return dir * (speed * standSpeedMul);
+        return dir.normalized * (speed * standSpeedMul);
     }
 
     /// <summary>
@@ -62,6 +62,6 @@ public static class NPCMovement
     /// <returns>Next vector for Translate() with values based on 1 real-time second</returns>
     public static Vector2 DirectionalMovement(Vector2 from, Vector2 to, float speed)
     {
-        return (to - from) * (speed * standSpeedMul);
+        return (to - from).normalized * (speed * standSpeedMul);
     }
 }
