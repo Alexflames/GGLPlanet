@@ -79,11 +79,19 @@ public class Inventory : MonoBehaviour
         {
             Transform cell = cellContainer.transform.GetChild(i);
             Transform icon = cell.GetChild(0);
+            Transform countItem = icon.GetChild(0);
+            Text txt = countItem.GetComponent<Text>();
+            
             Image img = icon.GetComponent<Image>();
             if (items[i].id != 0)
             {
                 img.sprite = Resources.Load<Sprite>(items[i].pathIcon);
                 img.enabled = true;
+                if(items[i].IsStackable)
+                {
+                    txt.enabled = true;
+                    txt.text = items[i].countItem.ToString();
+                }
             } 
             else
             {
