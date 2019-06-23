@@ -14,11 +14,11 @@ public class Inventory : MonoBehaviour
     private GameObject Canvas;
     public GameObject cellContainerPrefab;
 
-    private CollectableItems collectableItems;
+    private CollectableItems CollectableItems;
 
     private void Start()
     {
-        collectableItems = GetComponentInChildren<CollectableItems>();
+        CollectableItems = GetComponentInChildren<CollectableItems>();
 
         Canvas = GameObject.Find("Canvas");
         cellContainer = Instantiate(cellContainerPrefab, Canvas.transform.position, Quaternion.identity) as GameObject;
@@ -52,7 +52,7 @@ public class Inventory : MonoBehaviour
         }
         if(Input.GetKeyDown(collectItems))
         {
-            collectableItems.Control();
+            CollectableItems.Control();
         }
     }
 
@@ -73,17 +73,43 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void CollectStackableItem(ItemBase newItem)
+    {
+        if (newItem != null)
+        {
+            for (int i = 0; i < items.Count; i++)
+            {
+                if(items[i].id == newItem.id)
+                {
+                    items[i].countItem++;
+                    DisplayItems();
+                    newItem = null;
+                    return;
+                }
+            }
+            CollectItems(newItem);
+        }
+
+    }
+
     private void DisplayItems()
     {
         for(int i = 0;i < items.Count;i++)
         {
             Transform cell = cellContainer.transform.GetChild(i);
             Transform icon = cell.GetChild(0);
+            Transform countItem = icon.GetChild(0);
+            Text txt = countItem.GetComponent<Text>();
+            
             Image img = icon.GetComponent<Image>();
             if (items[i].id != 0)
             {
                 img.sprite = Resources.Load<Sprite>(items[i].pathIcon);
                 img.enabled = true;
+                if(items[i].IsStackable)
+                { 
+                    txt.text = items[i].countItem.ToString();
+                }
             } 
             else
             {
