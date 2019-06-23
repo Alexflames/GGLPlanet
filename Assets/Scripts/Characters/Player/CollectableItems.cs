@@ -56,7 +56,6 @@ public class CollectableItems : MonoBehaviour
         if (ItemBases.Count > 0)
         {
             ItemBase item = ItemBases[0];
-            Debug.Log(item.NameOfItem);
             Message(item);
             AddItem(item);
             Destroy(ItemBases[0].gameObject);

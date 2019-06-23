@@ -100,7 +100,7 @@ public class Inventory : MonoBehaviour
             Transform icon = cell.GetChild(0);
             Transform countItem = icon.GetChild(0);
             Text txt = countItem.GetComponent<Text>();
-            
+
             Image img = icon.GetComponent<Image>();
             if (items[i].id != 0)
             {
