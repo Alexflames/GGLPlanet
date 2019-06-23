@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CollectableItems : MonoBehaviour
 {
-    public Inventory Inventory1;
+    private Inventory Inventory1;
 
     private List<ItemBase> ItemBases = new List<ItemBase>();
 

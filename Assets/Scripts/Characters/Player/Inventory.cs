@@ -14,11 +14,11 @@ public class Inventory : MonoBehaviour
     private GameObject Canvas;
     public GameObject cellContainerPrefab;
 
-    private CollectableItems CollectableItems;
+    private CollectableItems collectableItems;
 
     private void Start()
     {
-        CollectableItems = GetComponentInChildren<CollectableItems>();
+        collectableItems = GetComponentInChildren<CollectableItems>();
 
         Canvas = GameObject.Find("Canvas");
         cellContainer = Instantiate(cellContainerPrefab, Canvas.transform.position, Quaternion.identity) as GameObject;
@@ -52,7 +52,7 @@ public class Inventory : MonoBehaviour
         }
         if(Input.GetKeyDown(collectItems))
         {
-            CollectableItems.Control();
+            collectableItems.Control();
         }
     }
 
