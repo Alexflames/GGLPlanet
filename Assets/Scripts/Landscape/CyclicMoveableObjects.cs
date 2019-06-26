@@ -5,7 +5,7 @@ using UnityEngine;
 public class CyclicMoveableObjects : MonoBehaviour
 {
     [SerializeField]
-    private Transform[] MoveableObjects;
+    private Transform[] MoveableObjects = null;
     [SerializeField]
     private float MoveLimit = 30;
     [SerializeField]
