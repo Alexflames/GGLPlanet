@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LaserCubeLinesAttack : CuboidAttack
 {
-
     [SerializeField]
     private float attackDuration = 2f;
     public override float duration {
