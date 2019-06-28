@@ -57,15 +57,12 @@ public class BurstAttack : CuboidAttack
     // Start is called before the first frame update
     public override void AttStart()
     {
-        if (isServer)
-        {
-            moveCtrl = new ScaryCuboidMoveController(gameObject, moveSpeedDuringAttack, 0.1f);
-        }
         // If we have 20 bullets per tick, then we have 20 / timeToNext bullets per second
         // And we want to have bullets for at least bulletLifeTime seconds
         arrCapacity = System.Convert.ToInt16(averageBulletCount / timeToNext) * bulletLifeTime;
         bullets = new ExtremeBaddyProj[arrCapacity];
         TTNLeft = timeToNext;
+        moveCtrl = new ScaryCuboidMoveController(gameObject, moveSpeedDuringAttack, 0.1f);
     }
 
     void UpdateBullets()
@@ -137,10 +134,7 @@ public class BurstAttack : CuboidAttack
     // TODO: CAN BE UPGRADED TO EITHER LETTING BULLETS CONTINUE FLYING
     // OR SLOWLY MAKE THEM FADE OUT
     public override void AttEnd() {
-        if (isServer)
-        {
-            OnDestroy();
-        }
+        OnDestroy();
         bulletArrayIndex = 0;
     }
 

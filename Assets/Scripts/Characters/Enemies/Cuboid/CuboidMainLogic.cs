@@ -39,9 +39,6 @@ public class CuboidMainLogic : NetworkBehaviour
 
     void FixedUpdate()
     {
-        // Attacking
-        attackManager.UpdateAttack();
-
         if (!isServer) return;
 
         // In-between attacks (movement logic)
@@ -68,5 +65,8 @@ public class CuboidMainLogic : NetworkBehaviour
                 }
             }
         }
+
+        // Attacking
+        attackManager.UpdateAttack();
     }
 }
