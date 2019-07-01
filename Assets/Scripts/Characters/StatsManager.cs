@@ -73,6 +73,15 @@ public class StatsManager : NetworkBehaviour
             Dies();
         }
     }
+
+    public void SpeedAddMul(float mul)
+    {
+        SimplePlayerMovement controller = gameObject.GetComponent<SimplePlayerMovement>();
+        if (controller != null)
+        {
+            controller.speedMul *= mul;
+        }
+    }
     
     // Make object transparent if cannot be hit
     void VisualizeInvul(bool vulnurable)

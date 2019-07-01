@@ -2,11 +2,11 @@
 
 public class SpeedUpAbility : PlayerAbility
 {
-    [SerializeField]
     private int energyCost = 50;
 
-    [SerializeField]
     private float abilityDuration = 5;
+
+    private float speedMul = 1.2F;
 
     public override void Init()
     {
@@ -15,22 +15,13 @@ public class SpeedUpAbility : PlayerAbility
 
     public override void Activate()
     {
-        isActive = true;
-        abilityDurationRemaining = abilityDuration;
+        TurnOn();
     }
 
     public override void Deactivate()
     {
         // This is left empty because the player won't be able to deactivate
         // the ability manually
-    }
-
-    public override void UpdateStats(PlayerStatMod statMod)
-    {
-        if (isActive)
-        {
-            statMod.SpeedMul *= 1.5f;
-        }
     }
 
     public override void FixedUpdateCall()
@@ -41,13 +32,13 @@ public class SpeedUpAbility : PlayerAbility
         }
         else if (isActive)
         {
-            isActive = false;
+            TurnOff();
         }
     }
 
     public override void ForceBreak()
     {
-        isActive = false;
+        TurnOff();
     }
 
     public override bool IsActive
@@ -62,4 +53,17 @@ public class SpeedUpAbility : PlayerAbility
 
     private bool isActive = false;
     private float abilityDurationRemaining = 0;
+
+    private void TurnOn()
+    {
+        isActive = true;
+        target.SpeedAddMul(speedMul);
+        abilityDurationRemaining = abilityDuration; 
+    }
+
+    private void TurnOff()
+    {
+        isActive = false;
+        target.SpeedAddMul(1 / speedMul);
+    }
 }

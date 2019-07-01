@@ -5,14 +5,16 @@ public abstract class PlayerAbility
     // Called when the ability is initialized by the ability manager
     public abstract void Init();
 
+    public void PassTarget(StatsManager _target)
+    {
+        target = _target;
+    }
+
     // Called when the ability is activated by player
     public abstract void Activate();
 
     // Called when the ability is deactivated by player, if it's possible
     public abstract void Deactivate();
-
-    // Updates the player stats
-    public abstract void UpdateStats(PlayerStatMod statMod);
 
     // Called by an ability manager every fixed update call
     public abstract void FixedUpdateCall();
@@ -23,4 +25,6 @@ public abstract class PlayerAbility
     public abstract bool IsActive { get; }
 
     public abstract int EnergyCost { get; }
+
+    protected StatsManager target = null;
 }

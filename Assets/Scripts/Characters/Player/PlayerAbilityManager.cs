@@ -4,15 +4,18 @@ using Mirror;
 public class PlayerAbilityManager : NetworkBehaviour
 {
     private PlayerAbility ability;
+    
+    private PlayerStatsManager statsManager;
 
     private void Start()
     {
+        statsManager = GetComponent<PlayerStatsManager>();
         energyMax = 100;
         energy = energyMax;
         energyGainPerSecond = 5;
         ability = new SpeedUpAbility();
         ability.Init();
-        UpdateStats();
+        ability.PassTarget(statsManager);
     }
 
     private void Update()
@@ -25,13 +28,11 @@ public class PlayerAbilityManager : NetworkBehaviour
                 {
                     energy -= ability.EnergyCost;
                     ability.Activate();
-                    UpdateStats();
                 }
             }
             else
             {
                 ability.Deactivate();
-                UpdateStats();
             }
         }
     }
@@ -45,17 +46,10 @@ public class PlayerAbilityManager : NetworkBehaviour
     private void OnDisable()
     {
         ability.ForceBreak();
-        UpdateStats();
-    }
-
-    private void UpdateStats()
-    {
-        statMod.Reset();
-        ability.UpdateStats(statMod);
     }
 
     private float energy;
     private float energyMax;
     private float energyGainPerSecond;
-    private PlayerStatMod statMod;
+    
 }

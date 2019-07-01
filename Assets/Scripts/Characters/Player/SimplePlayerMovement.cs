@@ -6,7 +6,8 @@ using Mirror;
 public class SimplePlayerMovement : NetworkBehaviour
 {
     [SerializeField]
-    private float Speed = 25;
+    private float speed = 25;
+    public float speedMul = 1;
     private readonly float _baseSpeedBySecond = 250;
 
     private SpriteRenderer _sprite;
@@ -42,7 +43,7 @@ public class SimplePlayerMovement : NetworkBehaviour
 
     void Move(Vector2 direction)
     {
-        transform.Translate(direction * Speed / _baseSpeedBySecond);
+        transform.Translate(direction * speed * speedMul / _baseSpeedBySecond);
     }
 
     // Update is called once per frame
