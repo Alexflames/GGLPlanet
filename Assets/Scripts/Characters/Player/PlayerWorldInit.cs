@@ -10,7 +10,10 @@ public class PlayerWorldInit : NetworkBehaviour
     {
         if (!isLocalPlayer)
         {
-            GetComponent<SpriteRenderer>().color = new Color(0.8f, 0.2f, 0.8f);
+            GetComponent<SpriteRenderer>().color = new Color(
+                Random.Range(0, 1.0f),
+                Random.Range(0, 1.0f),
+                Random.Range(0, 1.0f));
             GetComponent<Collider2D>().isTrigger = true;
         }
         

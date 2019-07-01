@@ -5,7 +5,9 @@ using Mirror;
 
 public class LockCameraOnPlayer : NetworkBehaviour
 {
-    new GameObject camera;
+    new private GameObject camera;
+    [SerializeField]
+    private float CameraOffset = 0;
     private Quaternion savedRotation;
     // Start is called before the first frame update
     void Start()
@@ -18,7 +20,7 @@ public class LockCameraOnPlayer : NetworkBehaviour
         camera.transform.parent = gameObject.transform;
         camera.transform.position = new Vector3(
                 gameObject.transform.position.x, 
-                gameObject.transform.position.y, 
+                gameObject.transform.position.y + CameraOffset, 
                 camera.transform.position.z);
         savedRotation = camera.transform.rotation;
     }
