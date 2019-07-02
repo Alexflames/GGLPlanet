@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    private List<ItemBase> items;
+    [HideInInspector]
+    public List<ItemBase> items;
 
     private KeyCode showInventory = KeyCode.I;
     private KeyCode collectItems = KeyCode.F;
@@ -14,11 +15,11 @@ public class Inventory : MonoBehaviour
     private GameObject Canvas;
     public GameObject cellContainerPrefab;
 
-    private CollectableItems CollectableItems;
+    private CollectableItems сollectableItems;
 
     private void Start()
     {
-        CollectableItems = GetComponentInChildren<CollectableItems>();
+        сollectableItems = GetComponentInChildren<CollectableItems>();
 
         Canvas = GameObject.Find("Canvas");
         cellContainer = Instantiate(cellContainerPrefab, Canvas.transform.position, Quaternion.identity) as GameObject;
@@ -30,6 +31,11 @@ public class Inventory : MonoBehaviour
             items.Add(cellContainer.transform.GetChild(i).GetComponent<ItemBase>());
         }
         cellContainer.SetActive(false);
+
+        for(int i = 0;i < cellContainer.transform.childCount;i++)
+        {
+            cellContainer.transform.GetChild(i).GetComponent<CurrentItem>().index = i;
+        }
     }
 
     private void Update()
@@ -41,22 +47,15 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(showInventory))
         {
-            if (cellContainer.activeSelf)
-            {
-                cellContainer.SetActive(false);
-            }
-            else
-            {
-                cellContainer.SetActive(true);
-            }
+            cellContainer.SetActive(!cellContainer.activeSelf);
         }
         if(Input.GetKeyDown(collectItems))
         {
-            CollectableItems.Control();
+            сollectableItems.Control();
         }
     }
 
-    public void CollectItems(ItemBase newItem)
+     public void CollectItems(ItemBase newItem)
     { 
         if (newItem != null)
         {
@@ -92,7 +91,7 @@ public class Inventory : MonoBehaviour
 
     }
 
-    private void DisplayItems()
+    public void DisplayItems()
     {
         for(int i = 0;i < items.Count;i++)
         {
@@ -106,9 +105,13 @@ public class Inventory : MonoBehaviour
             {
                 img.sprite = Resources.Load<Sprite>(items[i].pathIcon);
                 img.enabled = true;
-                if(items[i].IsStackable)
+                if(items[i].countItem > 1)
                 {
                     txt.text = items[i].countItem.ToString();
+                }
+                else
+                {
+                    txt.text = null;
                 }
             } 
             else

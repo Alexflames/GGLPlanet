@@ -52,6 +52,7 @@ MonoBehaviour:
   IsStackable: 1
   DescriptionItem: Drink it to live
   pathIcon: Heal
+  pathPrefab: HealthBottle
   Itemtype: 1
 --- !u!50 &594238249624144620
 Rigidbody2D:
