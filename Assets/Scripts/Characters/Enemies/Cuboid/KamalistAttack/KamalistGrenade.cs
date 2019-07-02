@@ -39,7 +39,7 @@ public class KamalistGrenade : NetworkBehaviour
     void FixedUpdate()
     {
         if (timer >= explodeTime) {
-            Explosion ();
+            Explosion (numberOfFragments);
             NetworkServer.Destroy(gameObject);
         }
         transform.Translate(f * linearSpeedFactor);
@@ -48,11 +48,12 @@ public class KamalistGrenade : NetworkBehaviour
         timer += Time.fixedDeltaTime;
     }
   
-    void Explosion () {
+    void Explosion (int fragCount) {
+        print (fragCount);
         float angle = Random.Range(0, 360);
-        for (int i = 0; i < numberOfFragments; i++) {
+        for (int i = 0; i < fragCount; i++) {
              GameObject g = GameObject.Instantiate(fragmentPrefab, transform.position, Quaternion.Euler(0, 0, angle));
-             angle += 360 / numberOfFragments;
+             angle += 360 / fragCount;
              NetworkServer.Spawn(g);
         }
     }
@@ -67,11 +68,12 @@ public class KamalistGrenade : NetworkBehaviour
             var stats = coll.transform.parent.gameObject.GetComponent<StatsManager>();
             AttackInformation attack = new AttackInformation(null, damage);
             stats.DealDamage(attack);
+            Explosion (numberOfFragments / 2); //player usually receives all the fragments with increased damage
             NetworkServer.Destroy(gameObject);
         }
 
         if (coll.gameObject.tag == "Environment") {
-            Explosion ();
+            Explosion (numberOfFragments);
             NetworkServer.Destroy(gameObject);
         }
     }

@@ -37,7 +37,6 @@ public class KamalistFragment : NetworkBehaviour
     void OnTriggerEnter2D(Collider2D coll)
     {
         if (!isServer) return;
-print("II");
         if (coll.name == gameObject.name) return;
 
         if (coll.name.ToLower() == "heart")
