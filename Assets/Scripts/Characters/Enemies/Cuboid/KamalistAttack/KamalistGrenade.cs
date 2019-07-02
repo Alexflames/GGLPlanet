@@ -7,11 +7,15 @@ using Mirror;
 public class KamalistGrenade : NetworkBehaviour
 {
     private Vector2 f;
-    private float linearSpeedFactor = 0.023f;
+    [SerializeField]
+    private float linearSpeedFactor = 0.033f;
+    [SerializeField]
     private float rotationSpeed = 4;
     private float timer = 0;
     private float explodeTime = 3;
     private int damage = 5;
+    [SerializeField]
+    private int numberOfFragments = 8;
 
     [SerializeField]
     private GameObject fragmentPrefab;
@@ -46,9 +50,9 @@ public class KamalistGrenade : NetworkBehaviour
   
     void Explosion () {
         float angle = Random.Range(0, 360);
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < numberOfFragments; i++) {
              GameObject g = GameObject.Instantiate(fragmentPrefab, transform.position, Quaternion.Euler(0, 0, angle));
-             angle += 45;
+             angle += 360 / numberOfFragments;
              NetworkServer.Spawn(g);
         }
     }

@@ -122,6 +122,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
+  linearSpeedFactor: 0.023
+  rotationSpeed: 6
+  numberOfFragments: 16
   fragmentPrefab: {fileID: 3669991110139820161, guid: 5a4a915457fb81806ab847d172bb95f4,
     type: 3}
 --- !u!114 &2374581775318160912
@@ -139,7 +142,7 @@ MonoBehaviour:
   serverOnly: 0
   localPlayerAuthority: 0
   m_AssetId: 
-  m_SceneId: 249486509
+  m_SceneId: 48747327
 --- !u!50 &-149243433265740884
 Rigidbody2D:
   serializedVersion: 4

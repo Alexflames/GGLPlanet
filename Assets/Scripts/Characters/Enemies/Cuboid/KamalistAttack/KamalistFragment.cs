@@ -6,6 +6,7 @@ using Mirror;
 public class KamalistFragment : NetworkBehaviour
 {
     private Vector2 f;
+    [SerializeField]
     private float linearSpeedFactor = 0.040f;
     private float rotationSpeed = 8;
     private int damage = 1;
