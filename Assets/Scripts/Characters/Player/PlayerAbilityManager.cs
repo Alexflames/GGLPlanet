@@ -39,7 +39,7 @@ public class PlayerAbilityManager : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        energy = Mathf.Min(energy + energyGainPerSecond / Time.fixedDeltaTime);
+        energy = Mathf.Min(energy + energyGainPerSecond * Time.fixedDeltaTime, energyMax);
         ability.FixedUpdateCall();
     }
 
