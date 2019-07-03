@@ -18,22 +18,7 @@ public class CurrentItem : MonoBehaviour,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right)
-        {
-            if (inventory.items[index].id != 0)
-            {
-                GameObject droppedObject = Instantiate(Resources.Load<GameObject>(inventory.items[index].pathPrefab));
-                droppedObject.transform.position = player.transform.position + Vector3.right * 0.5f;
-                if (inventory.items[index].countItem > 1)
-                {
-                    inventory.items[index].countItem--;
-                }
-                else
-                {
-                    inventory.items[index] = new ItemBase();
-                }
-                inventory.DisplayItems();
-            }
-        }
+        inventory.items[index].Activate(eventData, index, inventory,player);
+
     }
 }

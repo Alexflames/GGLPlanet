@@ -1,16 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ItemBase : MonoBehaviour
 {
-    public enum ItemType
-    {
-        Ammunition,
-        UsableItem,
-        Clothes
-    }
-
     public string NameOfItem = "";
 
     public int id = 0;
@@ -19,12 +13,15 @@ public class ItemBase : MonoBehaviour
 
     public bool IsStackable = false;
 
-    [Multiline(4)]
+    [Multiline(5)]
     public string DescriptionItem = "";
 
     public string pathIcon = "";
 
     public string pathPrefab = "";
 
-    public ItemType Itemtype;
+    public virtual void Activate(PointerEventData eventData,int index, Inventory inventory,GameObject player)
+    {
+
+    }
 }

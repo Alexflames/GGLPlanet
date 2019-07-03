@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 594238249624144609}
-  - component: {fileID: 594238249624144623}
   - component: {fileID: 594238249624144620}
   - component: {fileID: 594238249624144621}
+  - component: {fileID: 4382612329842024669}
   m_Layer: 0
   m_Name: HealthBottle
   m_TagString: Untagged
@@ -34,26 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &594238249624144623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 594238249624144608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91740a1496bfffd499238ecf48f3f1d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NameOfItem: Health Bottle
-  id: 1
-  countItem: 1
-  IsStackable: 1
-  DescriptionItem: Drink it to live
-  pathIcon: Heal
-  pathPrefab: HealthBottle
-  Itemtype: 1
 --- !u!50 &594238249624144620
 Rigidbody2D:
   serializedVersion: 4
@@ -101,6 +81,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.68}
   m_EdgeRadius: 0
+--- !u!114 &4382612329842024669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594238249624144608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0784682bdea367747b8f6c3b705f0813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NameOfItem: Health Bottle
+  id: 1
+  countItem: 1
+  IsStackable: 1
+  DescriptionItem: Drink it
+  pathIcon: Health
+  pathPrefab: HealthBottle
 --- !u!1 &594238250812028701
 GameObject:
   m_ObjectHideFlags: 0
