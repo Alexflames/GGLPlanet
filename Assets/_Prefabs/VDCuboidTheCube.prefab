@@ -19,6 +19,11 @@ GameObject:
   - component: {fileID: 7427201095407733773}
   - component: {fileID: 7427201095407733769}
   - component: {fileID: 7693378797930151845}
+  - component: {fileID: 36729731}
+  - component: {fileID: 4586472332225736337}
+  - component: {fileID: 2013802685093203266}
+  - component: {fileID: 36729732}
+  - component: {fileID: 2138464314641439285}
   m_Layer: 9
   m_Name: VDCuboidTheCube
   m_TagString: Enemy
@@ -33,7 +38,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7427201095407733772}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.9425919, y: -0.05159664, z: -0.1743393}
   m_LocalScale: {x: 1.6295594, y: 1.6295594, z: 1.6295594}
   m_Children:
@@ -103,8 +108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serverOnly: 0
   localPlayerAuthority: 0
-  m_AssetId: c4b604505d19efa4caa030d8b530aad6
-  m_SceneId: 0
+  m_AssetId: 
+  m_SceneId: 3256686848
 --- !u!61 &7427201095407733780
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -122,7 +127,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -179,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
-  MaxHP: 45
+  MaxHP: 150
   Invulnurable: 0
   invulTimeAfterHit: 0
 --- !u!114 &7427201095407733774
@@ -256,6 +261,91 @@ MonoBehaviour:
   moveSpeedDuringAttack: 20
   attColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   attackDuration: 4
+--- !u!114 &36729731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7427201095407733772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc7457b7eea19cd8bf692d51736a7a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncInterval: 0.1
+  attackDuration: 0
+  attColor: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &4586472332225736337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7427201095407733772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc57504b2737eb4aa07258e71f99c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncInterval: 0.1
+  AttackDuration: 0
+  AttackColor: {r: 1, g: 0.9764151, b: 0.9764151, a: 0}
+  SphereSpeed: 2
+  arcSphere: {fileID: 2482454571342549745, guid: d96bc4e8b11b9c84994ddd3328d7106e,
+    type: 3}
+  ArcAngle: 45
+  SphereNumber: 3
+--- !u!114 &2013802685093203266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7427201095407733772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc7457b7eea19cd8bf692d51736a7a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncInterval: 0.1
+  attackDuration: 0
+  attColor: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &36729732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7427201095407733772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc57504b2737eb4aa07258e71f99c9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncInterval: 0.1
+  AttackDuration: 0
+  AttackColor: {r: 0, g: 0, b: 0, a: 0}
+  SphereSpeed: 2
+  arcSphere: {fileID: 0}
+  ArcAngle: 45
+  SphereNumber: 3
+--- !u!114 &2138464314641439285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7427201095407733772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea91c852d27cd1f448da4c7058b7b2ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncInterval: 0.1
+  attackDuration: 2
+  attColor: {r: 1, g: 0.18396229, b: 0.18396229, a: 0}
+  zone: {fileID: 7044752734112911177, guid: 31e7538ba4b0d31449aa4d99a21b5adc, type: 3}
 --- !u!1 &7427201095978913960
 GameObject:
   m_ObjectHideFlags: 0
