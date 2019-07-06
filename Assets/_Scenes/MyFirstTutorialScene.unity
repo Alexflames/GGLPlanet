@@ -8656,13 +8656,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 508030883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea91c852d27cd1f448da4c7058b7b2ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c5def9742f00f84ebe8550e96fbe8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
   attackDuration: 2
-  attColor: {r: 1, g: 0, b: 0, a: 0}
-  zone: {fileID: 7044752734112911177, guid: 31e7538ba4b0d31449aa4d99a21b5adc, type: 3}
+  attColor: {r: 0.9622642, g: 0.41209054, b: 0.18609825, a: 0}
+  wisp: {fileID: 3199745231479898354, guid: 33e6e40119aa4f6438680a385adc4924, type: 3}
+  WispNumber: 30
+  WispSpeed: 1.6
 --- !u!1 &508855813
 GameObject:
   m_ObjectHideFlags: 0
@@ -32979,6 +32981,15 @@ PrefabInstance:
       propertyPath: gameObjectsToUseTransition.Array.data[1]
       value: 
       objectReference: {fileID: 229832113}
+    - target: {fileID: 508030884, guid: c4b604505d19efa4caa030d8b530aad6, type: 3}
+      propertyPath: WispSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 508030884, guid: c4b604505d19efa4caa030d8b530aad6, type: 3}
+      propertyPath: wisp
+      value: 
+      objectReference: {fileID: 3199745231479898354, guid: 33e6e40119aa4f6438680a385adc4924,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4b604505d19efa4caa030d8b530aad6, type: 3}
 --- !u!1001 &6927394946702362495
