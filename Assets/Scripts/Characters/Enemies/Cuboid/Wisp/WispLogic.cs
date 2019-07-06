@@ -7,7 +7,7 @@ public class WispLogic : MonoBehaviour
 
     private Vector2 direction = Vector2.zero;
     private float Speed = 1;
-
+    private float OrbitSpeed = 3;
     public void SetSpeed(float speedToSet)
     {
         Speed = speedToSet;
@@ -16,9 +16,18 @@ public class WispLogic : MonoBehaviour
     {
         direction = dir;
     }
+    public void SetOrbitSpeed(float OrbitspeedToSet)
+    {
+        OrbitSpeed = OrbitspeedToSet;
+    }
     void Update()
     {
         transform.Translate(direction * Time.deltaTime * Speed);
+        Invoke("OrbitArround", 1);
+    }
+    void OrbitArround()
+    {
+        transform.RotateAround(gameObject.transform.position, Vector3.forward, OrbitSpeed * Time.deltaTime);
     }
     void OnTriggerEnter2D(Collider2D coll)
     {

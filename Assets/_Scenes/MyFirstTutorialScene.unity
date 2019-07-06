@@ -8660,11 +8660,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
-  attackDuration: 2
+  attackDuration: 5
   attColor: {r: 0.9622642, g: 0.41209054, b: 0.18609825, a: 0}
   wisp: {fileID: 3199745231479898354, guid: 33e6e40119aa4f6438680a385adc4924, type: 3}
   WispNumber: 30
-  WispSpeed: 1.6
+  WispSpeed: 1.4
+  WispOrbitSpeed: 2
 --- !u!1 &508855813
 GameObject:
   m_ObjectHideFlags: 0
@@ -32990,6 +32991,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3199745231479898354, guid: 33e6e40119aa4f6438680a385adc4924,
         type: 3}
+    - target: {fileID: 7427201095407733773, guid: c4b604505d19efa4caa030d8b530aad6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7693378797930151845, guid: c4b604505d19efa4caa030d8b530aad6,
+        type: 3}
+      propertyPath: attackDuration
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4b604505d19efa4caa030d8b530aad6, type: 3}
 --- !u!1001 &6927394946702362495
