@@ -10,10 +10,15 @@ public class KamalistFragment : NetworkBehaviour
     private float linearSpeedFactor = 0.040f;
     private float rotationSpeed = 8;
     private int damage = 1;
+    private bool acting = false;
     // Start is called before the first frame update
     void Start()
     {
         f = Vector2.right;
+    }
+
+    public void Act () {
+        acting = true;
     }
 
      public static Vector2 Rotate(Vector2 v, float degrees) {
@@ -29,6 +34,7 @@ public class KamalistFragment : NetworkBehaviour
 
     void FixedUpdate()
     {
+        if (!acting) return;
         transform.Translate(f * linearSpeedFactor);
         transform.Rotate (Vector3.forward * -(rotationSpeed));
         f = Rotate(f, rotationSpeed);
@@ -37,6 +43,7 @@ public class KamalistFragment : NetworkBehaviour
     void OnTriggerEnter2D(Collider2D coll)
     {
         if (!isServer) return;
+        if (!acting) return;
         if (coll.name == gameObject.name) return;
 
         if (coll.name.ToLower() == "heart")
