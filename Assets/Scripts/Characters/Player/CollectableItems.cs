@@ -8,80 +8,51 @@ public class CollectableItems : MonoBehaviour
 {
     private Inventory Inventory1;
 
-    public GameObject MessageManagerPrefab;
-    private GameObject MessageManager;
-    private GameObject Canvas;
-    public GameObject message;
-
-    private List<ItemBase> ItemBases = new List<ItemBase>();
+    private List<ItemsOnTheGround> ItemsOnTheGround = new List<ItemsOnTheGround>();
 
     private void Start()
     {
-        Canvas = GameObject.Find("Canvas");
-        MessageManager = Instantiate(MessageManagerPrefab, new Vector3(150,270,0), Quaternion.identity) as GameObject;
-        MessageManager.transform.SetParent(Canvas.transform);
-
         Inventory1 = GetComponentInParent<Inventory>();
     }
 
    private void OnTriggerEnter2D(Collider2D collider)
     {
-        ItemBase item = collider.GetComponent<ItemBase>();
+        ItemsOnTheGround item = collider.GetComponent<ItemsOnTheGround>();
         if(item)
         {
-            ItemBases.Add(item);
+            ItemsOnTheGround.Add(item);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider)
-        {
-            ItemBase item = collider.GetComponent<ItemBase>();
+
+            ItemsOnTheGround item = collider.GetComponent<ItemsOnTheGround>();
             if (item)
             {
-                for (int i = 0; i < ItemBases.Count; i++)
+                for (int i = 0; i < ItemsOnTheGround.Count; i++)
                 {
-                    if (ItemBases[i] == item)
+                    if (ItemsOnTheGround[i] == item)
                     {
-                        ItemBases.RemoveAt(i);
+                    ItemsOnTheGround.RemoveAt(i);
                     }
                 }
             }
-        }
+        
     }
 
     public void Control()
     {
-        if (ItemBases.Count > 0)
+        if (ItemsOnTheGround.Count > 0)
         {
-            ItemBase item = ItemBases[0];
-            Message(item);
+            ItemsOnTheGround item = ItemsOnTheGround[0];
             AddItem(item);
-            Destroy(ItemBases[0].gameObject);
         }
     }
 
-    private void Message(ItemBase item)
+    private void AddItem(ItemsOnTheGround item)
     {
-        GameObject msgObj = Instantiate(message);
-        msgObj.transform.SetParent(MessageManager.transform);
-        Text msgtxt = msgObj.transform.GetChild(1).GetComponent<Text>();
-        msgtxt.text = item.NameOfItem;
-        Image msgimg = msgObj.transform.GetChild(0).GetComponent<Image>();
-        msgimg.sprite = Resources.Load<Sprite>(item.pathIcon);
-    }
-
-    private void AddItem(ItemBase item)
-    {
-        if (!item.IsStackable)
-        {
-            Inventory1.CollectItems(item);
-        }
-        else
-        {
-            Inventory1.CollectStackableItem(item);
-        }
+        item.Collect(Inventory1);
     }
 
 }

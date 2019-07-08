@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ItemBase : MonoBehaviour
+public class ItemBase:MonoBehaviour
 {
     public string NameOfItem = "";
 
@@ -13,14 +13,13 @@ public class ItemBase : MonoBehaviour
 
     public bool IsStackable = false;
 
-    [Multiline(5)]
     public string DescriptionItem = "";
 
     public string pathIcon = "";
 
     public string pathPrefab = "";
 
-    public virtual void Activate(PointerEventData eventData,int index, Inventory inventory,GameObject player)
+    public virtual void Activate(GameObject player)
     {
 
     }

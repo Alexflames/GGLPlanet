@@ -18,7 +18,7 @@ public class CurrentItem : MonoBehaviour,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        inventory.items[index].Activate(eventData, index, inventory,player);
+        inventory.PointerEffect(eventData, index);
 
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Inventory : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class Inventory : MonoBehaviour
     private GameObject cellContainer;
     private GameObject Canvas;
     public GameObject cellContainerPrefab;
+    public GameObject MessageManagerPrefab;
+    private GameObject MessageManager;
+    public GameObject message;
 
     private CollectableItems сollectableItems;
 
@@ -22,13 +26,17 @@ public class Inventory : MonoBehaviour
         сollectableItems = GetComponentInChildren<CollectableItems>();
 
         Canvas = GameObject.Find("Canvas");
+
         cellContainer = Instantiate(cellContainerPrefab, Canvas.transform.position, Quaternion.identity) as GameObject;
         cellContainer.transform.SetParent(Canvas.transform);
 
+        MessageManager = Instantiate(MessageManagerPrefab, new Vector3(150, 270, 0), Quaternion.identity) as GameObject;
+        MessageManager.transform.SetParent(Canvas.transform);
+
         items = new List<ItemBase>();
         for (int i = 0; i < cellContainer.transform.childCount; i++)
-        { 
-            items.Add(cellContainer.transform.GetChild(i).GetComponent<ItemBase>());
+        {
+            items.Add(new ItemBase());
         }
         cellContainer.SetActive(false);
 
@@ -64,6 +72,7 @@ public class Inventory : MonoBehaviour
                 if (items[i].id == 0)
                 {
                     items[i] = newItem;
+                    Message(newItem);
                     DisplayItems();
                     newItem = null;
                     break;
@@ -81,6 +90,7 @@ public class Inventory : MonoBehaviour
                 if(items[i].id == newItem.id)
                 {
                     items[i].countItem++;
+                    Message(newItem);
                     DisplayItems();
                     newItem = null;
                     return;
@@ -121,5 +131,53 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-        
+
+    private void Message(ItemBase item)
+    {
+        GameObject msgObj = Instantiate(message);
+        msgObj.transform.SetParent(MessageManager.transform);
+        Text msgtxt = msgObj.transform.GetChild(1).GetComponent<Text>();
+        msgtxt.text = item.NameOfItem;
+        Image msgimg = msgObj.transform.GetChild(0).GetComponent<Image>();
+        msgimg.sprite = Resources.Load<Sprite>(item.pathIcon);
+    }
+    
+    public void PointerEffect(PointerEventData eventData, int index)
+    {
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            if (items[index].id != 0)
+            {
+                Drop(index);
+                ItemsReduction(index);
+            }
+        }
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            if (items[index].id != 0)
+            {
+                items[index].Activate(gameObject);
+                ItemsReduction(index);
+            }
+        }
+    }
+
+    private void Drop(int index)
+    {
+        GameObject droppedObject = Instantiate(Resources.Load<GameObject>(items[index].pathPrefab));
+        droppedObject.transform.position = gameObject.transform.position + Vector3.right * 0.5f;
+    }
+
+    private void ItemsReduction(int index)
+    {
+        if (items[index].countItem > 1)
+        {
+            items[index].countItem--;
+        }
+        else
+        {
+           items[index] = new ItemBase();
+        }
+       DisplayItems();
+    }
 }
