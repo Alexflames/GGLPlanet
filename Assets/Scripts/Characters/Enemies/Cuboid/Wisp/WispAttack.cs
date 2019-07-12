@@ -6,7 +6,7 @@ public class WispAttack : CuboidAttack
 {
 
     [SerializeField]
-    private float attackDuration;
+    public float attackDuration;
 
     public override float duration
     {
@@ -39,7 +39,7 @@ public class WispAttack : CuboidAttack
     private GameObject wisp;
     private GameObject player;
 
-    
+    public float timeleft;
 
     [SerializeField]
     private int WispNumber = 30;
@@ -47,9 +47,10 @@ public class WispAttack : CuboidAttack
     [SerializeField]
     private float WispSpeed = 1.6f;
     [SerializeField]
-    private float WispOrbitSpeed = 2;
-    public void CreateWisp(Vector3 dirOfCube)
+    private float WispOrbitSpeed = -180;
+    public void CreateWisp(Vector3 dirOfCube, float attackTimeLeft)
     {
+        timeleft = attackTimeLeft;
         var wispInstance = GameObject.Instantiate(wisp,
             dirOfCube,
             Quaternion.Euler(0, 0, Random.Range(0, 360)));
@@ -57,24 +58,27 @@ public class WispAttack : CuboidAttack
         wispLogic.SetDirection(dirOfCube);
         wispLogic.SetSpeed(WispSpeed);
         wispLogic.SetOrbitSpeed(WispOrbitSpeed);
-        Destroy(wispInstance, 4);
+        wispLogic.SetTimeLeft(timeleft);
+        Destroy(wispInstance, 5);
     }
     public override void AttStart()
     {
+        float attackTimeLeft = attackDuration;
         var player = GameObject.FindGameObjectWithTag("Player");
         if (player == null) return;
         var dirOfCube = gameObject.transform.position;
         for (int i = 0; i < WispNumber; i++)
         {
-            CreateWisp(dirOfCube);
+            CreateWisp(dirOfCube, attackTimeLeft);
         }
        
     }
 
-    public override void AttUpdate(float attackTimeLeft)
+    public override void AttUpdate(float timeleft)
     {
         if (player == null) return;
-        print("Attack updated: time left " + attackTimeLeft);
+        timeleft -= Time.deltaTime;
+            print("Attack updated: time left ");
     }
 
     public override void AttEnd()

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1473626791737950067}
   - component: {fileID: 9207258594527630450}
-  - component: {fileID: -7781018090965433532}
   - component: {fileID: -2171708125619123226}
   - component: {fileID: -8258514177029350396}
+  - component: {fileID: 8868695116043886526}
   m_Layer: 0
   m_Name: Wisp
   m_TagString: Untagged
@@ -82,18 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-7781018090965433532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3199745231479898354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c7bc37255ead9e4b8aee4330dc8f651, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &-2171708125619123226
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -131,3 +119,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8868695116043886526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3199745231479898354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7bc37255ead9e4b8aee4330dc8f651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeleft: 5
+  attackduration: 5
+  wisp1: {fileID: 3199745231479898354}
+  pivot1: {fileID: 7427201095407733772, guid: c4b604505d19efa4caa030d8b530aad6, type: 3}
+  axis: {x: 10, y: 10, z: 0}
+  obj: {fileID: 7427201095407733772, guid: c4b604505d19efa4caa030d8b530aad6, type: 3}
+  axisrotate: {x: 1, y: 0, z: 0}
+  angle: 4

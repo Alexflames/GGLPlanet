@@ -8663,6 +8663,7 @@ MonoBehaviour:
   attackDuration: 5
   attColor: {r: 0.9622642, g: 0.41209054, b: 0.18609825, a: 0}
   wisp: {fileID: 3199745231479898354, guid: 33e6e40119aa4f6438680a385adc4924, type: 3}
+  timeleft: 5
   WispNumber: 30
   WispSpeed: 1.4
   WispOrbitSpeed: 2
