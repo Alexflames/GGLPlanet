@@ -10625,7 +10625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
-  AttackDuration: 0.5
+  AttackDuration: 0
   AttackColor: {r: 0.8962264, g: 0.8295217, b: 0.57916516, a: 0}
   SphereSpeed: 2
   arcSphere: {fileID: 4914468751576528274, guid: 4ba77fe71c2e20b4689c7e58da84cb48,
@@ -10652,25 +10652,7 @@ MonoBehaviour:
   bullets: []
   moveSpeedDuringAttack: 20
   attColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  attackDuration: 3
---- !u!114 &769088935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769088932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff385edc5f0ddfce1b005a6c8d86eee0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncInterval: 0.1
-  attackDuration: 2
-  linesContainerPrefab: {fileID: 5647243529018671722, guid: 4a68ef4c64bd0db43ae1e34b5fce64f9,
-    type: 3}
-  sourceMaterialToCopy: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  attColor: {r: 0, g: 0.22655034, b: 1, a: 1}
+  attackDuration: 0
 --- !u!114 &769088946
 MonoBehaviour:
   m_ObjectHideFlags: 0
