@@ -45,9 +45,7 @@ public class WispAttack : CuboidAttack
     private int WispNumber = 30;
 
     [SerializeField]
-    private float WispSpeed = 1.6f;
-    [SerializeField]
-    private float WispOrbitSpeed = -180;
+    private float WispSpeed = 1.4f;
     public void CreateWisp(Vector3 dirOfCube, float attackTimeLeft)
     {
         timeleft = attackTimeLeft;
@@ -57,9 +55,8 @@ public class WispAttack : CuboidAttack
         var wispLogic = wispInstance.GetComponent<WispLogic>();
         wispLogic.SetDirection(dirOfCube);
         wispLogic.SetSpeed(WispSpeed);
-        wispLogic.SetOrbitSpeed(WispOrbitSpeed);
         wispLogic.SetTimeLeft(timeleft);
-        Destroy(wispInstance, 5);
+        Destroy(wispInstance, 4);
     }
     public override void AttStart()
     {

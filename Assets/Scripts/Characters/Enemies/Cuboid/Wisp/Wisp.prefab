@@ -135,7 +135,4 @@ MonoBehaviour:
   attackduration: 5
   wisp1: {fileID: 3199745231479898354}
   pivot1: {fileID: 7427201095407733772, guid: c4b604505d19efa4caa030d8b530aad6, type: 3}
-  axis: {x: 10, y: 10, z: 0}
-  obj: {fileID: 7427201095407733772, guid: c4b604505d19efa4caa030d8b530aad6, type: 3}
-  axisrotate: {x: 1, y: 0, z: 0}
-  angle: 4
+  axis: {x: 2, y: 2, z: 0}

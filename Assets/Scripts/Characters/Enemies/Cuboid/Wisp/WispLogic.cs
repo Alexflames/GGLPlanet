@@ -5,9 +5,8 @@ public class WispLogic : MonoBehaviour
 {
     private Vector2 direction = Vector2.zero;
     private float Speed = 1;
-    private float OrbitSpeed = 10;
-    public float timeleft = 5;
-    public float attackduration = 5;
+    public float timeleft = 4;
+    public float attackduration = 4;
 
     [Header("Add your wisp (RoPoArPi)")]
     public GameObject wisp1;
@@ -17,15 +16,6 @@ public class WispLogic : MonoBehaviour
 
     [Header("Add your axis (RoPoArPi)")]
     public Vector3 axis;  
-
-    [Header("Add your cube")]
-    public GameObject obj; //to get the position in worldspace to which this gameObject will rotate around.
-
-    [Header("The axis by which it will rotate around")]
-    public Vector3 axisrotate;//by which axis it will rotate. x,y or z.
-
-    [Header("Angle covered per update")]
-    public float angle; //or the speed of rotation.
 
     public void SetSpeed(float speedToSet)
     {
@@ -42,11 +32,6 @@ public class WispLogic : MonoBehaviour
         timeleft = timeleftToSet;
     }
 
-    public void SetOrbitSpeed(float OrbitspeedToSet)
-    {
-        OrbitSpeed = OrbitspeedToSet;
-    }
-
     void Update()
     {
         if (timeleft > attackduration * 0.3)
@@ -58,21 +43,10 @@ public class WispLogic : MonoBehaviour
             }
             else 
             {
-                orbita();
+                wisp1.transform.position = RotatePointAroundPivot();
             }
-            //Invoke("orbita", 1);
-            Invoke("RotatePointAroundPivot", 1);
+            
         }
-    }
-
-    void orbita()
-    {
-        transform.RotateAround(obj.transform.position, axisrotate, angle);
-    }
-
-    void OrbitArround()
-    {
-        transform.RotateAround(gameObject.transform.position, Vector3.up, OrbitSpeed * Time.deltaTime);
     }
 
     public Vector3 RotatePointAroundPivot()
