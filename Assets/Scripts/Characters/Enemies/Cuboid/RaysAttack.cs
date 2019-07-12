@@ -17,7 +17,7 @@ public class RaysAttack : CuboidAttack
     private GameObject bulletPrefab = null;
 
     [SerializeField]
-    private Color attColor = Color.yellow;
+    private Color attColor = Color.cyan;
 
     public override float duration
     {
