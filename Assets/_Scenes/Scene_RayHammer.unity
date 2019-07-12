@@ -13943,7 +13943,7 @@ MonoBehaviour:
   fullTurningAngle: 1080
   bulletPrefab: {fileID: 8839087569479466680, guid: c97f5dc8a98e8264b942c79282c4dff1,
     type: 3}
-  attColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  attColor: {r: 0.1, g: 1, b: 0.1, a: 1}
 --- !u!1001 &1073732172
 PrefabInstance:
   m_ObjectHideFlags: 0
