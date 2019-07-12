@@ -10671,6 +10671,9 @@ MonoBehaviour:
   TimeToEachSpawn: 0.25
   FragmentBombarder: {fileID: 5391806193425526697, guid: 89f42b3c39080ef42b585783dd0f1900,
     type: 3}
+  FragmentBomb: {fileID: 4216168215097813278, guid: 12ff8b1534a76c541b04c30eecb96247,
+    type: 3}
+  BombWaveProjectiles: 8
   spawnRange: {x: 5, y: 5}
 --- !u!1001 &775211362
 PrefabInstance:
@@ -32802,6 +32805,75 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c79ca72f81bd1349a3085f7ae279550, type: 3}
+--- !u!1001 &883341926050804234
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4216168215097813278, guid: 12ff8b1534a76c541b04c30eecb96247,
+        type: 3}
+      propertyPath: m_Name
+      value: FragmentBomb
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498269199649463008, guid: 12ff8b1534a76c541b04c30eecb96247,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.274
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498269199649463008, guid: 12ff8b1534a76c541b04c30eecb96247,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.146074
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498269199649463008, guid: 12ff8b1534a76c541b04c30eecb96247,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.456294
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498269199649463008, guid: 12ff8b1534a76c541b04c30eecb96247,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498269199649463008, guid: 12ff8b1534a76c541b04c30eecb96247,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498269199649463008, guid: 12ff8b1534a76c541b04c30eecb96247,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498269199649463008, guid: 12ff8b1534a76c541b04c30eecb96247,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498269199649463008, guid: 12ff8b1534a76c541b04c30eecb96247,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498269199649463008, guid: 12ff8b1534a76c541b04c30eecb96247,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498269199649463008, guid: 12ff8b1534a76c541b04c30eecb96247,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498269199649463008, guid: 12ff8b1534a76c541b04c30eecb96247,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 12ff8b1534a76c541b04c30eecb96247, type: 3}
 --- !u!1001 &4857813133627529842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32930,6 +33002,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FragmentSource
       objectReference: {fileID: 0}
+    - target: {fileID: 5391806193425526697, guid: 89f42b3c39080ef42b585783dd0f1900,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5391806193425526701, guid: 89f42b3c39080ef42b585783dd0f1900,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32968,7 +33045,7 @@ PrefabInstance:
     - target: {fileID: 5391806193425526701, guid: 89f42b3c39080ef42b585783dd0f1900,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5391806193425526701, guid: 89f42b3c39080ef42b585783dd0f1900,
         type: 3}
