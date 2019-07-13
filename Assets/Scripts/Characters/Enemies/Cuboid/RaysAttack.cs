@@ -11,13 +11,13 @@ public class RaysAttack : CuboidAttack
     private float afterAttackTime = 2f;
 
     [SerializeField]
-    private float fullTurningAngle = 720f;
+    private float turningSpeed = 700f;
 
     [SerializeField]
     private GameObject bulletPrefab = null;
 
     [SerializeField]
-    private Color attColor = Color.cyan;
+    private Color attColor = Color.green;
 
     public override float duration
     {
@@ -53,8 +53,6 @@ public class RaysAttack : CuboidAttack
         bulletArray = new ExtremeBaddyProj[bulletArrayCapacity];
 
         attackAngle = Random.Range(0f, 360f);
-        attackOffset = fullTurningAngle / ((attackDuration - afterAttackTime) * attackDirectionsAmount);
-        attackDurationLeft = attackDuration;
     }
 
     public override void AttUpdate(float attackTimeLeft)
@@ -62,21 +60,31 @@ public class RaysAttack : CuboidAttack
         if (isServer)
         {
             float dt = Time.fixedDeltaTime;
+
+            float attackTimePassed = attackDuration - attackTimeLeft;
+            float spinningSpeed = (attackTimePassed / attackDuration) * 3f - 1f;
+            attackAngle += turningSpeed * dt * spinningSpeed;
+            attackTimeLeft -= dt;
+
             moveCtrl.UpdateMove(dt);
             UpdateBullets();
             TTNLeft -= dt;
 
             if (TTNLeft < 0 && attackTimeLeft > afterAttackTime)
             {
-                TTNLeft = TTN;
+                if (spinningSpeed > 1)
+                {
+                    TTNLeft = TTN / spinningSpeed;
+                }
+                else
+                {
+                    TTNLeft = TTN;
+                }
                 for (int i = 0; i < attackDirectionsAmount; i++)
                 {
                     SpawnBullet(attackAngle + i * (360f / attackDirectionsAmount));
                 }
             }
-
-            attackAngle += (fullTurningAngle + attackOffset) / ((attackDuration - afterAttackTime) * attackDirectionsAmount) * dt;
-            attackTimeLeft -= dt;
         }
         else
         {
@@ -137,13 +145,11 @@ public class RaysAttack : CuboidAttack
     
     private ScaryCuboidMoveController moveCtrl;
     private ExtremeBaddyProj[] bulletArray;
-    private float attackDurationLeft;
     private int bulletArrayIndex = 0;
     private int bulletArrayCapacity = 0;
     private float moveSpeedDuringAttack = 5f;
     private float attackAngle = 0;
-    private float attackOffset;
-    private int attackDirectionsAmount = 6;
-    private float TTN = 1f / 6;
+    private int attackDirectionsAmount = 8;
+    private float TTN = 1f / 10;
     private float TTNLeft = 0f;
 }
