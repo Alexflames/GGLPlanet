@@ -8,7 +8,7 @@ public class ItemsOnTheGround : MonoBehaviour
 
     void Start()
     {
-        CurrentItem = GetComponent<ItemBase>();
+        CurrentItem = new HpBottle();
     }
 
     public void Collect(Inventory inventory)

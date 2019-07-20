@@ -69,7 +69,7 @@ public class Inventory : MonoBehaviour
         {
             for (int i = 0;i < items.Count;i++)
             {
-                if (items[i].id == 0)
+                if (items[i].id == "")
                 {
                     items[i] = newItem;
                     Message(newItem);
@@ -111,7 +111,7 @@ public class Inventory : MonoBehaviour
             Text txt = countItem.GetComponent<Text>();
 
             Image img = icon.GetComponent<Image>();
-            if (items[i].id != 0)
+            if (items[i].id != "")
             {
                 img.sprite = Resources.Load<Sprite>(items[i].pathIcon);
                 img.enabled = true;
@@ -146,7 +146,7 @@ public class Inventory : MonoBehaviour
     {
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            if (items[index].id != 0)
+            if (items[index].id != "")
             {
                 Drop(index);
                 ItemsReduction(index);
@@ -154,7 +154,7 @@ public class Inventory : MonoBehaviour
         }
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if (items[index].id != 0)
+            if (items[index].id != "")
             {
                 items[index].Activate(gameObject);
                 ItemsReduction(index);

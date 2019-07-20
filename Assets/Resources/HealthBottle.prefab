@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NameOfItem: Health Bottle
-  id: 1
+  id: HealthBottle
   countItem: 1
   IsStackable: 1
   DescriptionItem: Drink it

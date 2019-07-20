@@ -3,21 +3,76 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ItemBase : MonoBehaviour
+public class ItemBase
 {
-    public string NameOfItem = "";
+    public virtual string NameOfItem { get { return ""; } }
 
-    public int id = 0;
+    public virtual string id { get { return ""; } }
 
-    public int countItem = 0;
+    public virtual int countItem { get { return 0; } set { } }
 
-    public bool IsStackable = false;
+    public virtual bool IsStackable { get { return false; } }
 
-    public string DescriptionItem = "";
+    public virtual string DescriptionItem { get { return ""; } }
 
-    public string pathIcon = "";
+    public virtual string pathIcon { get { return ""; } }
+
+    public virtual string pathPrefab { get { return ""; } }
+    /* public string id = "";
+     public virtual string ID
+     {
+         get
+         {
+             return id;
+         }
+     }*/
+
+
+    /*public int countItem = 0;
+    public virtual int CountItem
+    {
+        get
+        {
+            return countItem;
+        }
+    }*/
+
+
+    /*public bool IsStackable = false;
+    public virtual bool isstackable
+    {
+        get
+        {
+            return IsStackable;
+        }
+    }*/
+
+    /*public string DescriptionItem = "";
+    public virtual string Descriptionitem
+    {
+        get
+        {
+            return DescriptionItem;
+        }
+    }*/
+
+    /*public string pathIcon = "";
+    public virtual string PathIcon
+    {
+        get
+        {
+            return pathIcon;
+        }
+    }
 
     public string pathPrefab = "";
+    public virtual string PathPrefab
+    {
+        get
+        {
+            return pathPrefab;
+        }
+    }*/
 
     public virtual void Activate(GameObject player)
     {
