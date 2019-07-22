@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 594238249624144609}
   - component: {fileID: 594238249624144620}
   - component: {fileID: 594238249624144621}
-  - component: {fileID: 4382612329842024669}
   - component: {fileID: 5154250986323785311}
   m_Layer: 0
   m_Name: HealthBottle
@@ -82,25 +81,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.35, y: 0.57}
   m_EdgeRadius: 0
---- !u!114 &4382612329842024669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 594238249624144608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0784682bdea367747b8f6c3b705f0813, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NameOfItem: Health Bottle
-  id: HealthBottle
-  countItem: 1
-  IsStackable: 1
-  DescriptionItem: Drink it
-  pathIcon: Heal
-  pathPrefab: HealthBottle
 --- !u!114 &5154250986323785311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6311d3faa14444a9030d0807471ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: HealthBottle
 --- !u!1 &594238250812028701
 GameObject:
   m_ObjectHideFlags: 0

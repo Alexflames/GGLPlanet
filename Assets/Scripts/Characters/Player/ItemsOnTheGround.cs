@@ -6,9 +6,13 @@ public class ItemsOnTheGround : MonoBehaviour
 {
     private ItemBase CurrentItem;
 
+    public string ID = "";
+
+    DataBaseOfItems DataBase = new DataBaseOfItems();
+
     void Start()
     {
-        CurrentItem = new HpBottle();
+        DataBase.DataBase(ID, out CurrentItem);
     }
 
     public void Collect(Inventory inventory)
