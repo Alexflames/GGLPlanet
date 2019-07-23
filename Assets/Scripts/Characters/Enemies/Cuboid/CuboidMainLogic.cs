@@ -39,6 +39,9 @@ public class CuboidMainLogic : NetworkBehaviour
 
     void FixedUpdate()
     {
+        // Attacking
+        attackManager.UpdateAttack();
+
         if (!isServer) return;
 
         // In-between attacks (movement logic)
@@ -53,8 +56,12 @@ public class CuboidMainLogic : NetworkBehaviour
             {
                 if (currentMoveController.GetType() == typeof(ScaryCuboidMoveController))
                 {
-                    currentMoveController = followPlayerMovement;
-                    followPlayerMovement.SetTarget(GameObject.FindGameObjectsWithTag("Player")[0].transform);
+                    var playerToFollow = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+                    if (playerToFollow)
+                    {
+                        currentMoveController = followPlayerMovement;
+                        followPlayerMovement.SetTarget(playerToFollow);
+                    }
                     // make follow mode 1.5 times longer than random, cause it is more scary and fun
                     moveSwitchModeTimer = changeMoveModeStartTimer * 1.5f;
                 }
@@ -65,8 +72,5 @@ public class CuboidMainLogic : NetworkBehaviour
                 }
             }
         }
-
-        // Attacking
-        attackManager.UpdateAttack();
     }
 }

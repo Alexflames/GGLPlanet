@@ -6,6 +6,8 @@ using Mirror;
 public class LocalObjectsRotation : NetworkBehaviour
 {
     ObjectsOnScreen objProvider;
+    [SerializeField]
+    private Vector3 EulerAnglesOffset = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,7 @@ public class LocalObjectsRotation : NetworkBehaviour
                 var gameObj = obj as GameObject;
                 if (!isObjectToRotate(gameObj)) continue;
 
-                gameObj.transform.eulerAngles = transform.eulerAngles;
+                gameObj.transform.eulerAngles = transform.eulerAngles + EulerAnglesOffset;
             }
         }
     }
