@@ -354,8 +354,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 392ce091d406bdd4980a28e358261f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items: []
   cellContainerPrefab: {fileID: 226992250599394145, guid: db91793fbc21b5c469dd32fe61f41859,
     type: 3}
+  MessageManagerPrefab: {fileID: 9139940796415902951, guid: 8c7ef46469f611d4996856e2b17d646d,
+    type: 3}
+  message: {fileID: 2684722908551400212, guid: aa6b640b0bf186d4bbf9dfe07e9126bc, type: 3}
 --- !u!1 &4041778340113072888
 GameObject:
   m_ObjectHideFlags: 0
