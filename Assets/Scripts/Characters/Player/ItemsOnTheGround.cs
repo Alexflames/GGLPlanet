@@ -12,7 +12,7 @@ public class ItemsOnTheGround : MonoBehaviour
 
     void Start()
     {
-        DataBase.DataBase(ID, out CurrentItem);
+        DataBase.DataBase(ID,out CurrentItem);
     }
 
     public void Collect(Inventory inventory)

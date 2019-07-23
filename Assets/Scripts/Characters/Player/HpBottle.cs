@@ -69,7 +69,7 @@ public class HpBottle : ItemsConsumble
 
     protected override void ActivateEffect(GameObject player)
     {
-
+        
         StatsManager = player.GetComponent<StatsManager>();
         AttackInformation attackInformation = new AttackInformation(player,-1);
         StatsManager.DealDamage(attackInformation);
