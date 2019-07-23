@@ -19,6 +19,9 @@
 # Visual Studio cache directory
 .vs/
 
+#IDEA IDE
+.idea/
+
 # Visual Studio Code settings directory
 .vscode/
 
