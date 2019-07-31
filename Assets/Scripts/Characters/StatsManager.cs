@@ -55,6 +55,14 @@ public class StatsManager : NetworkBehaviour
         vulnurable &= iFrames <= 0;
         return vulnurable;
     }
+    
+    public void GiveHealth(int healthGiven)
+    {
+        if (!isServer) return;
+        
+        CurrentHP += healthGiven;
+        HPChange(CurrentHP);
+    }
 
     public void DealDamage(AttackInformation attack)
     {

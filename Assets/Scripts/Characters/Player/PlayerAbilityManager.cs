@@ -13,7 +13,7 @@ public class PlayerAbilityManager : NetworkBehaviour
         energyMax = 100;
         energy = energyMax;
         energyGainPerSecond = 5;
-        ability = new SpeedUpAbility();
+        ability = new MedkitAbility();
         ability.Init();
         ability.PassTarget(statsManager);
     }
