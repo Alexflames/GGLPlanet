@@ -6,16 +6,22 @@ public class SpeedUpAbility : PlayerAbility
 
     private float abilityDuration = 5;
 
-    private float speedMul = 1.2F;
+    private float abilityCooldownPeriod = 0.5f;
+
+    private float speedMul = 1.2f;
 
     public override void Init()
     {
+        abilityCooldownRemaining = 0;
         isActive = false;
     }
 
     public override void Activate()
     {
-        TurnOn();
+        if (abilityCooldownRemaining <= 0)
+        {
+            TurnOn();
+        }
     }
 
     public override void Deactivate()
@@ -30,9 +36,20 @@ public class SpeedUpAbility : PlayerAbility
         {
             abilityDurationRemaining -= Time.fixedDeltaTime;
         }
-        else if (isActive)
+        else 
         {
-            TurnOff();
+            if (isActive)
+            {
+                TurnOff();
+                abilityCooldownRemaining = abilityCooldownPeriod;
+            }
+            else
+            {
+                if (abilityCooldownRemaining > 0)
+                {
+                    abilityCooldownRemaining -= Time.fixedDeltaTime;
+                }
+            }
         }
     }
 
@@ -46,6 +63,11 @@ public class SpeedUpAbility : PlayerAbility
         get { return isActive; }
     }
 
+    public override float CooldownRemaining
+    {
+        get { return abilityCooldownRemaining; }
+    }
+
     public override int EnergyCost
     {
         get { return energyCost; }
@@ -53,6 +75,7 @@ public class SpeedUpAbility : PlayerAbility
 
     private bool isActive = false;
     private float abilityDurationRemaining = 0;
+    private float abilityCooldownRemaining = 0;
 
     private void TurnOn()
     {

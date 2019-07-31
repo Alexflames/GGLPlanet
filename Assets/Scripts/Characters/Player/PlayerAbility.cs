@@ -24,6 +24,8 @@ public abstract class PlayerAbility
 
     public abstract bool IsActive { get; }
 
+    public abstract float CooldownRemaining { get; }
+
     public abstract int EnergyCost { get; }
 
     protected StatsManager target = null;
