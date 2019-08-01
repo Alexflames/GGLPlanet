@@ -16,18 +16,13 @@ public class SpeedUpAbility : PlayerAbility
         isActive = false;
     }
 
-    public override void Activate()
+    public override void UserPress()
     {
-        if (abilityCooldownRemaining <= 0)
+        if (!isActive && abilityCooldownRemaining <= 0 && user.Energy >= energyCost)
         {
+            user.DrainEnergy(energyCost);
             TurnOn();
         }
-    }
-
-    public override void Deactivate()
-    {
-        // This is left empty because the player won't be able to deactivate
-        // the ability manually
     }
 
     public override void FixedUpdateCall()
@@ -80,13 +75,13 @@ public class SpeedUpAbility : PlayerAbility
     private void TurnOn()
     {
         isActive = true;
-        target.SpeedAddMul(speedMul);
+        user.SpeedAddMul(speedMul);
         abilityDurationRemaining = abilityDuration; 
     }
 
     private void TurnOff()
     {
         isActive = false;
-        target.SpeedAddMul(1 / speedMul);
+        user.SpeedAddMul(1 / speedMul);
     }
 }

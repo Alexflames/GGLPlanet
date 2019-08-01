@@ -16,9 +16,21 @@ public class StatsManager : NetworkBehaviour
     float iFrames = 0; 
     private bool lastFrameVulnurable = true;
 
+    public float Energy { get { return energy; } }
+
+    public void DrainEnergy(float amount)
+    {
+        energy -= amount;
+    } 
+
+    private float energyMax = 100;
+    private float energy;
+    private float energyGainPerSecond = 5;
+
     void Start()
     {
         CurrentHP = MaxHP;
+        energy = energyMax;
         StatsStart();
     }
 
@@ -46,6 +58,7 @@ public class StatsManager : NetworkBehaviour
             VisualizeInvul(lastFrameVulnurable);
         }
         // Another block
+        energy = Mathf.Min(energy + energyGainPerSecond * Time.fixedDeltaTime, energyMax);
     }
 
     bool isVulnurable()

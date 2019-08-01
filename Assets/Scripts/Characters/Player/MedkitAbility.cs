@@ -12,19 +12,14 @@ public class MedkitAbility : PlayerAbility
         isActive = false;
     }
 
-    public override void Activate()
+    public override void UserPress()
     {
-        if (abilityCooldownRemaining <= 0)
+        if (abilityCooldownRemaining <= 0 && user.Energy >= energyCost)
         {
-            target.GiveHealth(1);
+            user.DrainEnergy(energyCost);
+            user.GiveHealth(1);
             abilityCooldownRemaining = abilityCooldownPeriod;
         }
-    }
-
-    public override void Deactivate()
-    {
-        // This is left empty because the player won't be able to deactivate
-        // the ability manually
     }
 
     public override void FixedUpdateCall()

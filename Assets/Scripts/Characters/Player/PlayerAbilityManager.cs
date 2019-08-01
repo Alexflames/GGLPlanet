@@ -10,36 +10,21 @@ public class PlayerAbilityManager : NetworkBehaviour
     private void Start()
     {
         statsManager = GetComponent<PlayerStatsManager>();
-        energyMax = 100;
-        energy = energyMax;
-        energyGainPerSecond = 5;
         ability = new MedkitAbility();
         ability.Init();
-        ability.PassTarget(statsManager);
+        ability.PassUser(statsManager);
     }
 
     private void Update()
     {
         if (Input.GetButtonDown("Jump"))
         {
-            if (ability.IsActive == false)
-            {
-                if (energy > ability.EnergyCost)
-                {
-                    energy -= ability.EnergyCost;
-                    ability.Activate();
-                }
-            }
-            else
-            {
-                ability.Deactivate();
-            }
+            ability.UserPress();
         }
     }
 
     private void FixedUpdate()
     {
-        energy = Mathf.Min(energy + energyGainPerSecond * Time.fixedDeltaTime, energyMax);
         ability.FixedUpdateCall();
     }
 
@@ -47,9 +32,5 @@ public class PlayerAbilityManager : NetworkBehaviour
     {
         ability.ForceBreak();
     }
-
-    private float energy;
-    private float energyMax;
-    private float energyGainPerSecond;
     
 }
