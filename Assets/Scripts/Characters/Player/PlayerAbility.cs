@@ -25,5 +25,5 @@ public abstract class PlayerAbility
 
     public abstract int EnergyCost { get; }
     
-    protected StatsManager user = null;
+    protected PlayerStatsManager user = null;
 }
