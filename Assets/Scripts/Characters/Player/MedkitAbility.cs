@@ -51,6 +51,5 @@ public class MedkitAbility : PlayerAbility
     }
 
     private bool isActive = false;
-    private float abilityDurationRemaining = 0;
     private float abilityCooldownRemaining = 0;
 }
