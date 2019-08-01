@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class CuboidAttackManager : NetworkBehaviour
+public class CuboidAttackManager : AttackManager
 {
     [SerializeField]
     private float timeBetweenAttacks = 5f;
@@ -46,12 +46,12 @@ public class CuboidAttackManager : NetworkBehaviour
         }
     }
 
-    public bool IsAttacking()
+    public override bool IsAttacking()
     {
         return CurrentAttack != null;
     }
 
-    private CuboidAttack ChooseAttack () {
+    protected override Attack ChooseAttack () {
         if (!priorityBasedChoosing) return attacks[Random.Range (0, attacks.Count)];
         int rndnum = Random.Range (0, prioritiesSum);
         int i;
@@ -75,7 +75,7 @@ public class CuboidAttackManager : NetworkBehaviour
     }
 
     // Update is called once per frame
-    public void UpdateAttack()
+    public override void UpdateAttack()
     {
         if (isLocalPlayer)
         {
@@ -89,7 +89,7 @@ public class CuboidAttackManager : NetworkBehaviour
         if (CurrentAttack == null) {
             if (TTA < 0)
             {
-                CurrentAttack = ChooseAttack ();
+                CurrentAttack = ChooseAttack() as CuboidAttack;
                 SetTransitionColorEffect(baseColor, CurrentAttack.attackColor);
                 CurrentAttack.AttStart();
                 TTA = CurrentAttack.duration;

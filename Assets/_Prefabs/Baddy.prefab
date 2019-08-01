@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 2785696176709776450}
   - component: {fileID: 7766583039700738065}
   - component: {fileID: 765079386244757428}
+  - component: {fileID: 4947666813256304958}
+  - component: {fileID: 532931064}
   m_Layer: 9
   m_Name: Baddy
   m_TagString: Enemy
@@ -32,7 +34,7 @@ Transform:
   m_GameObject: {fileID: 2194706249398322303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.226, y: 0.941, z: -0.3577497}
-  m_LocalScale: {x: 1.6295594, y: 1.6295594, z: 1.6295594}
+  m_LocalScale: {x: 2.5570915, y: 2.425542, z: 1.6295594}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 14bc0eb46b5f3eb4f9e21a0dfe47558b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,7 +102,7 @@ MonoBehaviour:
   serverOnly: 0
   localPlayerAuthority: 0
   m_AssetId: 
-  m_SceneId: 344082998
+  m_SceneId: 997585654
 --- !u!61 &7066275532591970007
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -176,7 +178,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncInterval: 0.1
   Speed: 0.005
-  moveDir: {x: 0, y: 0}
 --- !u!114 &765079386244757428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,6 +191,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
-  StartHP: 5
+  MaxHP: 5
   Invulnurable: 0
   invulTimeAfterHit: 0.25
+--- !u!114 &4947666813256304958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2194706249398322303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4d5434ea0d5a1346a5e004949286ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncInterval: 0.1
+  BaddyLaserPrefab: {fileID: 256852861583256373, guid: 3bbf44489a0004c43bd37449d5d13e77,
+    type: 3}
+  attackDuration: 5
+--- !u!114 &532931064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2194706249398322303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4dd7146fe932d4cb3967d2a2a082db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncInterval: 0.1
+  timeBetweenAttacks: 3

@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CollectableItems : MonoBehaviour
 {
     private Inventory Inventory1;
 
-    private List<ItemBase> ItemBases = new List<ItemBase>();
+    private List<ItemsOnTheGround> ItemsOnTheGround = new List<ItemsOnTheGround>();
 
     private void Start()
     {
@@ -16,39 +17,42 @@ public class CollectableItems : MonoBehaviour
 
    private void OnTriggerEnter2D(Collider2D collider)
     {
-        ItemBase item = collider.GetComponent<ItemBase>();
+        ItemsOnTheGround item = collider.GetComponent<ItemsOnTheGround>();
         if(item)
         {
-            ItemBases.Add(item);
+            ItemsOnTheGround.Add(item);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider)
-        {
-            ItemBase item = collider.GetComponent<ItemBase>();
+
+            ItemsOnTheGround item = collider.GetComponent<ItemsOnTheGround>();
             if (item)
             {
-                for (int i = 0; i < ItemBases.Count; i++)
+                for (int i = 0; i < ItemsOnTheGround.Count; i++)
                 {
-                    if (ItemBases[i] == item)
+                    if (ItemsOnTheGround[i] == item)
                     {
-                        ItemBases.RemoveAt(i);
+                    ItemsOnTheGround.RemoveAt(i);
                     }
                 }
             }
-        }
+        
     }
 
     public void Control()
     {
-        if (ItemBases.Count > 0)
+        if (ItemsOnTheGround.Count > 0)
         {
-            ItemBase item = ItemBases[0];
-            Inventory1.CollectItems(item);
-            Destroy(ItemBases[0].gameObject);
+            ItemsOnTheGround item = ItemsOnTheGround[0];
+            AddItem(item);
         }
+    }
+
+    private void AddItem(ItemsOnTheGround item)
+    {
+        item.Collect(Inventory1);
     }
 
 }
