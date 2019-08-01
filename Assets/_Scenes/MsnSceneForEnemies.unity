@@ -14820,12 +14820,12 @@ PrefabInstance:
     - target: {fileID: 2194706249398322301, guid: 8c77d01b1a29be843a730cbc2e3e9b0d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.44
+      value: -1.89
       objectReference: {fileID: 0}
     - target: {fileID: 2194706249398322301, guid: 8c77d01b1a29be843a730cbc2e3e9b0d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.36
+      value: -3.51
       objectReference: {fileID: 0}
     - target: {fileID: 2194706249398322301, guid: 8c77d01b1a29be843a730cbc2e3e9b0d,
         type: 3}
@@ -14884,7 +14884,13 @@ PrefabInstance:
         type: 3}
       propertyPath: BaddyLaserPrefab
       value: 
-      objectReference: {fileID: 4605880065301901671, guid: b38d4c8a99c77334286bdd1f8404fe1a,
+      objectReference: {fileID: 256852861583256373, guid: 3bbf44489a0004c43bd37449d5d13e77,
+        type: 3}
+    - target: {fileID: 4947666813256304958, guid: 8c77d01b1a29be843a730cbc2e3e9b0d,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 780128714864221161, guid: 05e6c70c5995b3341932b46d59c564ef,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c77d01b1a29be843a730cbc2e3e9b0d, type: 3}
