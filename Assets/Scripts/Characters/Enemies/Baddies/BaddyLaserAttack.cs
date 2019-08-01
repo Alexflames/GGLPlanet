@@ -26,6 +26,7 @@ public class BaddyLaserAttack : BaddyAttack
         get
         {
             return attackDuration;
+
         }
     }
 
