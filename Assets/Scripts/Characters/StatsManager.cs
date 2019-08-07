@@ -46,7 +46,10 @@ public class StatsManager : NetworkBehaviour
             VisualizeInvul(lastFrameVulnurable);
         }
         // Another block
+        StatsFixedUpdate();
     }
+
+    protected virtual void StatsFixedUpdate() { return; }
 
     bool isVulnurable()
     {
@@ -54,6 +57,14 @@ public class StatsManager : NetworkBehaviour
         vulnurable &= !Invulnurable;
         vulnurable &= iFrames <= 0;
         return vulnurable;
+    }
+    
+    public void GiveHealth(int healthGiven)
+    {
+        if (!isServer) return;
+        
+        CurrentHP += healthGiven;
+        HPChange(CurrentHP);
     }
 
     public void DealDamage(AttackInformation attack)
@@ -71,6 +82,15 @@ public class StatsManager : NetworkBehaviour
         if (CurrentHP < 0)
         {
             Dies();
+        }
+    }
+
+    public void SpeedAddMul(float mul)
+    {
+        SimplePlayerMovement controller = gameObject.GetComponent<SimplePlayerMovement>();
+        if (controller != null)
+        {
+            controller.speedMul *= mul;
         }
     }
     
