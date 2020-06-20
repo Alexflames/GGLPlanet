@@ -6,7 +6,7 @@ using UnityEngine;
 public class EmptyAttack : CuboidAttack
 {
     [SerializeField]
-    private float attackDuration = 4f;
+    private float attackDuration;
     public override float duration {
         get {
             return attackDuration;
@@ -20,7 +20,7 @@ public class EmptyAttack : CuboidAttack
     }
 
     [SerializeField]
-    private Color attColor = Color.yellow;
+    private Color attColor;
     public override Color attackColor {
         get {
             return attColor;
